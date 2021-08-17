@@ -1,0 +1,293 @@
+/* =======================================
+      Authentication-page css start
+ ========================================= */
+
+.common-img-bg {
+    background-size: cover;
+    background: url(../images/bg.jpg) no-repeat center center fixed;
+    height: 100%;
+}
+.signin-card .auth-box button i,.signup-card .auth-box button i,.login-card .auth-box button i{
+    padding: 5px 0;
+}
+.login-card.auth-body {
+    width: 450px;
+}
+.signin-card.auth-body{
+    width: 550px;
+}
+.signup-card.auth-body {
+    width: 650px;
+    margin-bottom: 70px;
+}
+.login-card {
+    border-radius: 30px;
+    position: relative;
+    display: block;
+    h1 {
+        font-size: 25px;
+        font-weight: 400;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+}
+
+.login {
+    text-align: left;
+    ul li label {
+        color: #757575;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+    h3 {
+        color: #666666;
+        font-size: 24px;
+        font-weight: 600;
+        margin-top: 20px;
+    }
+}
+
+.header .login-card {
+    margin-top: 30px;
+}
+
+.social-login {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding-bottom: 30px;
+    .btn {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+.pcoded .pcoded-header.auth-header{
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    box-shadow: 0 -1px 15px -4px rgba(0, 0, 0, 0.79);
+}
+.login-card {
+    .card-footer {
+        background: #fff;
+    }
+    h1 {
+        color: #1b8bf9;
+    }
+    .forget {
+        border-bottom: 1px solid #fff;
+        font-size: 24px;
+        line-height: 0.6;
+    }
+    h3 {
+        color: #666666;
+        font-size: 24px;
+        font-weight: 600;
+        margin-top: 20px;
+    }
+}
+
+.btn-signup,
+.btn-singin1,
+.btn-singin2 {
+    .btn-md {
+        font-size: 22px;
+        font-weight: 400;
+        width: 400px;
+    }
+}
+
+.form-group-main .form-group {
+    margin: 30px 0;
+}
+
+.login-card {
+    .unlock,
+    .btn-forgot {
+        text-align: center;
+    }
+}
+
+.imgs-screen .img-circle {
+    padding: 4px;
+    border: 1px solid #E6E6E4;
+}
+
+.sign-in-with {
+    font-weight: 600;
+    margin: 24px auto 16px;
+    position: relative;
+    text-align: center;
+    .text {
+        display: inline-block;
+        padding: 0 8px;
+        position: relative;
+        vertical-align: baseline;
+        z-index: 9999;
+        &:after {
+            left: 100%;
+        }
+        &:before {
+            right: 100%;
+        }
+        &:after,
+        &:before {
+            border-top: 1px solid rgba(0, 0, 0, .28);
+            content: '';
+            display: block;
+            position: absolute;
+            top: 8px;
+            width: 60px;
+        }
+    }
+}
+
+.error-500,
+.error-503,
+.error-404,
+.error-400,
+.error-403,
+.login {
+    align-items: center;
+    background-color: #2196F3;
+    display: flex;
+    height: 100%;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.auth-box {
+    background-color: #fff;
+    border-radius: 8px;
+    margin: 20px 0 0 0;
+    padding: 20px;
+    box-shadow: 0 2px 18px -2px rgb(0, 0, 0);
+    .confirm h3 {
+        color: $primary-color;
+        font-size: 34px;
+    }
+    i.icofont-check-circled {
+        font-size: 42px;
+    }
+}
+
+.btn-facebook {
+    background-color: #3c5a99;
+    border-color: #3c5a99;
+    border-radius: 2px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn-twitter {
+    background-color: #41abe1;
+    border-color: #41abe1;
+    border-radius: 2px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn-google-plus,
+.btn-linkedin,
+.btn-pinterest {
+    border-radius: 2px;
+}
+.pos-relative.login {
+    position: relative !important;
+}
+.footer {
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 9;
+    p {
+        margin-bottom: 0;
+        padding: 18px;
+        width: 100%;
+    }
+}
+
+.login-card-modal {
+    margin: 0 auto;
+}
+
+.login.login-modal-main {
+    background-color: #fff;
+}
+
+.mixed-form .tabbed-modal .nav-link h6 {
+    padding: 10px 0;
+}
+
+.mixed-form .tabbed-modal .nav-link {
+    background-color: #f5f5f5;
+    border-radius: 0;
+    color: #888;
+}
+
+.mixed-form .tabbed-modal .nav-link.active {
+    background-color: transparent;
+    border-color: transparent;
+    color: $inverse-color;
+}
+
+.mixed-form .modal-body {
+    padding: 0;
+}
+
+.mixed-form .auth-box {
+    background-color: #fff;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+    h3 {
+        color: #666666;
+        font-size: 22px;
+        font-weight: 600;
+        margin-top: 20px;
+    }
+    i.icofont-check-circled {
+        font-size: 42px;
+    }
+}
+
+.auth-box-main .navbar-nav li {
+    color: #fff;
+    line-height: 40px;
+}
+
+.login.offline-404 {
+    background-color: #f3f3f3;
+    display: flex !important;
+    .auth-body {
+        margin-top: -100px;
+    }
+    h1 {
+        color: #2c3e50;
+        font-size: 160px;
+        font-weight: 600;
+        letter-spacing: 5px;
+        text-shadow: 3px -2px 4px rgba(128, 128, 128, 0.57);
+    }
+    h2 {
+        color: #aaa;
+        font-weight: 600;
+        margin-bottom: 40px;
+        margin-top: 30px;
+    }
+    @media only screen and (max-width: 768px){
+        padding-top: 100px;
+        h1{
+            font-size: 60px;
+        }
+        h2{
+            margin-bottom: 15px;
+            margin-top: 15px;
+        }
+    }
+}
+
+
+/**====== Authentication-page css end ======**/

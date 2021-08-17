@@ -1,0 +1,81 @@
+// General variables
+$theme-bg-color: #f3f3f3;
+$theme-font-size:0.875em;
+$theme-font-color: #222;
+$theme-font-family:'Poppins', sans-serif;;
+// Theme colors variables;
+$primary-color:#4099ff;
+$warning-color:#f1c40f;
+$default-color:#e0e0e0;
+$danger-color: #FF5370;
+$success-color:#2ed8b6;
+$inverse-color:#222;
+$info-color :#00bcd4;
+$disabled-color:#4099ff;
+$white-txt: #fff;
+$theme-border:#d6d6d6;
+$light-color:#666;
+
+$social-name: facebook,twitter,dribbble,pinterest,youtube,googleplus,instagram,viber,amazon;
+$social-color: #3B5997,#42C0FB,#EC4A89,#BF2131,#E0291D,#C73E2E,#AA7C62,#7B519D,#000;
+$color-name: c-blue,c-pink,c-green,c-yellow,c-orenge,c-lite-green;
+$color-color: #4099ff,#FF5370,#2ed8b6,#FFB64D,#FE8A7D,#69CEC6;
+$color-blue: $primary-color;
+$color-pink: $danger-color;
+$color-green: $success-color;
+$color-yellow: $warning-color;
+$color-orenge: #FE8A7D;
+$color-lite-green: #69CEC6;
+$txt-lite-color: #919aa3;
+$card-bg-inverce: $inverse-color;
+$facebook:#3B5997;
+$twitter:#42C0FB;
+$dribble:#EC4A89;
+
+$theme-color:(
+    primary: (
+        base: $primary-color,
+        hover: lighten($primary-color, 10%),
+        active: darken($primary-color, 12%),
+        trans: transparentize($primary-color, 0.5)),
+    warning: (
+        base: $warning-color,
+        hover: lighten($warning-color, 10%),
+        active: darken($warning-color, 12%),
+        trans: transparentize($warning-color, 0.5)),
+    default: (
+        base: $default-color,
+        hover: lighten($default-color, 0%),
+        active: darken($default-color, 12%),
+        trans: transparentize($default-color, 0.5)),
+    danger: (
+        base: $danger-color,
+        hover: lighten($danger-color, 10%),
+        active: darken($danger-color, 12%),
+        trans: transparentize($danger-color, 0.5)),
+    success: (
+        base: $success-color,
+        hover: lighten($success-color, 10%),
+        active: darken($success-color, 12%),
+        trans: transparentize($success-color, 0.5)),
+    inverse: ( base: $inverse-color,
+        hover: lighten($inverse-color, 10%),
+        active: darken($inverse-color, 12%),
+        trans: transparentize($inverse-color, 0.5)),
+    info: (
+        base: $info-color,
+        hover: lighten($info-color, 10%),
+        active: darken($info-color, 12%),
+        trans: transparentize($info-color, 0.5)),
+    disabled: (
+        base: $disabled-color,
+        hover: lighten($disabled-color, 10%),
+        active: darken($disabled-color, 12%),
+        trans: transparentize($disabled-color, 0.5))
+);
+@function theme-color($color-name, $color-variant) {
+    @return map-get(map-get($theme-color, $color-name), $color-variant);
+}
+
+// Elements color
+$border-color:#ddd;

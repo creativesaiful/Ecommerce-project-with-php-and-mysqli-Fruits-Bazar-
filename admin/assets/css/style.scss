@@ -1,0 +1,76 @@
+/**
+
+Template Name: GURU Able Admin Template
+Author: #
+Email: #
+File: style.css
+**/
+
+
+/* =============
+  == Table of Contents==
+
+	- Custom Css
+	- Generic classes
+		-	Margin, Padding, Font class, text align, position, floating, overflow, background class, text color, display class, boarder class
+	- Theme Elements
+		-	Icons, Accordion, Button, Redial, floating actions, FAB, tabs, typography, buttons, box shadow, slider page, error page, Breadcrumb, pagination, Basic card, Login card
+	- General Elements
+		-	Modal, Nestable, Lable & Badges, List, Portlates, Preloader, Calender, To-Do, Materialize general elements, Lables
+	- Advance Form Elements
+	- Pages
+		-	Loader page, Invoice, Tasklist, Task detail, Range-slider, Counter, Maintenance, Color, FAQ, Progress, Panels & wells, Contact card, Auth pages, Flag
+		-	Gallery, Products pages, Widget, Email, Social timeline, Datatable, Chat, Blog, Wizard, CRM dashboard, Task board, Issue list, Chartlist, X-editable
+		-	Home chat, Dashboard 1-2-3-4
+	- Responsive media class
+
+============= */
+
+// General theme contents
+@import "partials/variables";
+@import "partials/mixins";
+@import "partials/general";
+@import "partials/generic";
+// Menu
+@import "partials/menu/pcmenu";
+// Important Theme elements
+@import "partials/theme-elements/button";
+@import "partials/theme-elements/form-elements";
+// Theme elements
+@import "partials/theme-elements/label-badges";
+@import "partials/theme-elements/icon-layout";
+// @import "partials/theme-elements/ready-to-use";
+// @import "partials/theme-elements/box-shadow";
+// Tables
+@import "partials/tables/tables";
+// Widget
+@import "partials/widget-dashboard/widget";
+// @import "partials/widget-dashboard/dashboard";
+// Other
+@import "partials/other/alert";
+@import "partials/other/authentication";
+@import "partials/other/breadcrumb";
+@import "partials/other/charts";
+@import "partials/other/chat";
+@import "partials/other/color";
+// @import "partials/other/draggable";
+// @import "partials/other/e-payment";
+// @import "partials/other/editors";
+// @import "partials/other/fb-wall";
+// @import "partials/other/full-calender";
+// @import "partials/other/job-find";
+// @import "partials/other/mail-pages";
+@import "partials/other/maps";
+// @import "partials/other/navbars";
+// @import "partials/other/note";
+// @import "partials/other/prism";
+// @import "partials/other/progress-bar";
+// @import "partials/other/pre-loader";
+// @import "partials/other/range-slider";
+// @import "partials/other/rating";
+//To-do
+// @import "partials/todo/todo";
+// Responsive css
+@import "partials/responsive/responsive";
+// dark layout css
+// @import "partials/dark";
