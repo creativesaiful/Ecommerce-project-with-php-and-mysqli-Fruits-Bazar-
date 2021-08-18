@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once("admin/class/adminback.php");
 $obj = new adminback();
 
@@ -12,7 +13,12 @@ if (isset($_POST['user_register_btn'])) {
     $reg_msg =  $obj->user_register($_POST);
 }
 
-
+if(isset($_SESSION['user_id'])){
+    $userId = $_SESSION['user_id'];
+    if($userId){
+        header('location:userprofile.php');
+    }
+}
 
 ?>
 

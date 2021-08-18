@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 include_once("admin/class/adminback.php");
 $obj = new adminback();
@@ -9,35 +10,17 @@ while ($data = mysqli_fetch_assoc($cata_info)) {
     $cataDatas[] = $data;
 }
 
-if (isset($_POST['addtocart'])) {
-
-    if (isset($_SESSION['cart'])) {
-        $pdt_names =  array_column($_SESSION['cart'], "pdt_name");
-        if (in_array($_POST['pdt_name'], $pdt_names)) {
-            echo "
-            <script>
-                alert('This Item Already added in Cart')
-            </script>
-        ";
-        } else {
-            $count = count($_SESSION['cart']);
-            $_SESSION['cart'][$count] = array(
-                'pdt_name' => $_POST['pdt_name'],
-                'pdt_price' => $_POST['pdt_price'],
-                'pdt_img' => $_POST['pdt_img'],
-                'pdt_id' => $_POST['pdt_id']
-            );
-           print_r($_SESSION['cart']);
-        }
-    } else {
-        $_SESSION['cart'][0] = array(
-            'pdt_name' => $_POST['pdt_name'],
-            'pdt_price' => $_POST['pdt_price'],
-            'pdt_img' => $_POST['pdt_img'],
-            'pdt_id' => $_POST['pdt_id']
-        );
-    }
+if (isset($_POST['user_login_btn'])){
+    $logmsg = $obj->user_login($_POST);
 }
+
+$userid = $_SESSION['user_id'];
+$username = $_SESSION['username'];
+
+if(empty($userid)){
+    header("location:user_login.php");
+}
+
 if(isset($_POST['remove_product'])){
     foreach($_SESSION['cart'] as $key => $value){
         if($value['pdt_name']==$_POST['remove_pdt_name']){
@@ -46,6 +29,13 @@ if(isset($_POST['remove_product'])){
         }
     }
 }
+
+if(isset($_GET['logout'])){
+    if($_GET['logout']=="logout"){
+        $obj->user_logout();
+    }
+}
+
 ?>
 
 
@@ -83,23 +73,29 @@ include_once("includes/head.php");
         <!-- Main content -->
         <div id="main-content" class="main-content">
 
-            <br>
-            <!-- Product -->
-            <div class="container ">
 
-                <!--Cart Table-->
-                <div class="shopping-cart-container">
-                    <div class="row">
-                        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-                            <h3 class="box-title">Your cart items</h3>
-                            <form class="shopping-cart-form" action="#" method="post">
+            <div class="container">
+                <h2 class="text-center">User Profile</h2>
+
+                <div class="row">
+                    <div class="col-md-2">
+                    <h4>Hello <?php
+                        if(isset($username)){
+                            echo strtoupper($username);
+                        }
+                    ?></h4>
+                    <a href="?logout=logout">Logout</a>
+                    </div>
+
+                    <div class="col-md-10">
+                    <form class="shopping-cart-form" action="#" method="post">
                                 <table class="shop_table cart-form">
                                     <thead>
                                         <tr>
                                             <th class="product-name">Product Name</th>
-                                            <th class="product-price">Price</th>
+                                            <th class="product-price">Status</th>
                                             <th class="product-quantity">Remove</th>
-                                            <th class="product-subtotal">Total</th>
+                                            <th class="product-subtotal">Price</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -122,7 +118,7 @@ include_once("includes/head.php");
                                             </td>
                                             <td class="product-price" data-title="Price">
                                                 <div class="price price-contain">
-                                                    <ins><span class="price-amount"><span class="currencySymbol">$</span><?php echo $value['pdt_price'] ?></span></ins>
+                                                    <ins><span class="price-amount"><span class="currencySymbol"></span>Action</span></ins>
                                                     
                                                 </div>
                                             </td>
@@ -145,58 +141,39 @@ include_once("includes/head.php");
                                             echo "Your cart is empty";
                                         }?>
 
-                                     
+                                        <tr class="cart_item wrap-buttons" >
+                                            <td class="wrap-btn-control" colspan="3">
+                                                <h2>Total</h2>
+                                            </td>
+
+                                            <td> 
+                                                <h2><?php echo $subtotal?> </h2> 
+                                            </td>
+                                        </tr>
+                                    
+                                    
+                                    
                                     </tbody>
                                 </table>
                             </form>
-                        </div>
-                        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                            <div class="shpcart-subtotal-block">
-                                <div class="subtotal-line">
-                                    <b class="stt-name">Subtotal <span class="sub">(<?php echo  $total_product.'Items' ?>)</span></b>
-                                    <span class="stt-price">$ <?php echo $subtotal; ?></span>
-                                </div>
-                                <div class="subtotal-line">
-                                    <b class="stt-name">Shipping</b>
-                                    <span class="stt-price">$0.00</span>
-                                </div>
-                                <div class="tax-fee">
-                                    <p class="title">Est. Taxes & Fees</p>
-                                    <p class="desc">Based on 56789</p>
-                                </div>
-                                <div class="btn-checkout">
-                                    <a href="userprofile.php" class="btn checkout">Check out</a>
-                                </div>
-                                <div class="biolife-progress-bar">
-                                    <table>
-                                        <tr>
-                                            <td class="first-position">
-                                                <span class="index">$0</span>
-                                            </td>
-                                            <td class="mid-position">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </td>
-                                            <td class="last-position">
-                                                <span class="index">$99</span>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <p class="pickup-info"><b>Free Pickup</b> is available as soon as today More about shipping and pickup</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
+               
+               
 
+
+               
 
 
 
             </div>
 
-            <br>
+
+
+
+
+
         </div>
     </div>
 

@@ -8,7 +8,7 @@ class  adminback
         $dbhost = "localhost";
         $dbuser = "root";
         $dbpass = "";
-        $dbname = "ecommerce";
+        $dbname = "ecommerce"; 
 
         $this->connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
@@ -268,6 +268,7 @@ class  adminback
         $user_mobile = $data['user_mobile'];
         $user_roles = $data['user_roles'];
 
+
         $user_check = "SELECT * FROM `users` WHERE user_name='$username' or user_email='$user_email'";
 
         $mysqli_result = mysqli_query($this->connection, $user_check);
@@ -287,5 +288,40 @@ class  adminback
         }
 
        
+    }
+
+
+    function user_login($data){
+        $user_email = $_POST['user_email'];
+        $user_password = md5($_POST['user_password']);
+
+        $query = "SELECT * FROM `users` WHERE `user_email`='$user_email' AND `user_password`='$user_password'";
+
+        if(mysqli_query($this->connection, $query)){
+            $result = mysqli_query($this->connection, $query);
+            $user_info = mysqli_fetch_array($result);
+            if($user_info){
+                header("location:userprofile.php");
+                session_start();
+                $_SESSION['user_id'] =$user_info['user_id'];
+                $_SESSION['email'] = $user_info['user_email'];
+                
+                $_SESSION['username']=$user_info['user_name'];
+            }else{
+                $logmsg = "Your username or password is incorrect";
+                return $logmsg;
+            }
+        }
+        
+    }
+
+    function user_logout(){
+        unset ($_SESSION['user_id']);
+        unset ($_SESSION['email']);
+        unset ($_SESSION['password']);
+       
+        header("location:user_login.php");
+        session_destroy();
+
     }
 }
