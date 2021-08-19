@@ -1,2 +1,2 @@
-user: Saiful
+user: admin@gmail.com
 pass:1234
