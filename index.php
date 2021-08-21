@@ -1,4 +1,6 @@
 <?php 
+
+session_start();
     include_once ("admin/class/adminback.php");
     $obj = new adminback();
 
@@ -7,6 +9,12 @@
     while($data = mysqli_fetch_assoc($cata_info)){
         $cataDatas[]=$data;
     }
+
+  
+
+
+
+
 
 
 

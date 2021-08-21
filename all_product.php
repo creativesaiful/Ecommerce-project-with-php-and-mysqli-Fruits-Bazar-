@@ -1,4 +1,6 @@
 <?php
+
+session_start();
 include_once("admin/class/adminback.php");
 $obj = new adminback();
 
@@ -8,28 +10,17 @@ while ($data = mysqli_fetch_assoc($cata_info)) {
     $cataDatas[] = $data;
 }
 
-if (isset($_GET['status'])) {
-    $cataId = $_GET['id'];
-    if ($_GET['status'] == 'catView') {
-        $pdt_info = $obj->display_product_byCata($cataId);
+
+
+
+$pdt_info = $obj->view_all_product();
+
+$pdt_datas = array();
         
-        $pdt_datas = array();
-        while($pdt_ftecth = mysqli_fetch_assoc($pdt_info)){
+while($pdt_ftecth = mysqli_fetch_assoc($pdt_info)){
             $pdt_datas[] = $pdt_ftecth;
-        }
-       
-    }
 }
 
-if (isset($_GET['status'])) {
-    $cataId = $_GET['id'];
-    if ($_GET['status'] == 'catView') {
-        $ctg_info = $obj->ctg_by_id($cataId);
-        
-        
-       
-    }
-}
 
 
 
@@ -71,30 +62,11 @@ include_once("includes/head.php");
         <div id="main-content" class="main-content">
 
             <!--Hero Section-->
-            <div class="hero-section hero-background">
-                <h1 class="page-title">
-                    <?php
-                   echo $ctg_info['ctg_name'];
-                    ?>
-                </h1>
-            </div>
+          
 
 
             <!--Navigation section-->
-            <div class="container">
-                <nav class="biolife-nav">
-                    <ul>
-                        <li class="nav-item"><a href="index.php" class="permal-link">Home</a></li>
-
-                        <li class="nav-item"><span class="current-page">
-
-                        <?php
-                   echo $ctg_info['ctg_name'];
-                    ?>
-                            </span></li>
-                    </ul>
-                </nav>
-            </div>
+           
 
 
             <!-- Product -->
@@ -117,7 +89,8 @@ include_once("includes/head.php");
                                             </a>
                                         </div>
                                         <div class="info">
-                                            <b class="categories"> <?php echo $pdt_data['ctg_name'] ?> </b>
+                                        <b class="categories"> <?php echo $pdt_data['ctg_name'] ?> </b>
+                                            
                                             <h4 class="product-title"><a href="single_product.php?status=singleproduct&&id=<?php echo $pdt_data['pdt_id'] ?>" class="pr-name"><?php echo $pdt_data['pdt_name'] ?></a></h4>
                                             <div class="price">
                                                 <ins><span class="price-amount"><span class="currencySymbol">Tk. </span><?php echo $pdt_data['pdt_price'] ?></span></ins>

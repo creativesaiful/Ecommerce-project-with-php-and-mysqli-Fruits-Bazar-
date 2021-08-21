@@ -1,4 +1,6 @@
 <?php
+
+session_start();
 include_once("admin/class/adminback.php");
 $obj = new adminback();
 
@@ -8,28 +10,26 @@ while ($data = mysqli_fetch_assoc($cata_info)) {
     $cataDatas[] = $data;
 }
 
-if (isset($_GET['status'])) {
-    $cataId = $_GET['id'];
-    if ($_GET['status'] == 'catView') {
-        $pdt_info = $obj->display_product_byCata($cataId);
-        
-        $pdt_datas = array();
-        while($pdt_ftecth = mysqli_fetch_assoc($pdt_info)){
-            $pdt_datas[] = $pdt_ftecth;
-        }
-       
+
+
+
+if(isset($_GET['search'])){
+    $keyword = $_GET['keyword'];
+    if(!empty($keyword)){
+        $search_query = $obj->search_product($keyword);
+
+   
+    
+    $search_results = array();
+    while($search = mysqli_fetch_assoc($search_query)){
+        $search_results[]=$search;
+    }
+
+    }else{
+        header('location:all_product.php');
     }
 }
 
-if (isset($_GET['status'])) {
-    $cataId = $_GET['id'];
-    if ($_GET['status'] == 'catView') {
-        $ctg_info = $obj->ctg_by_id($cataId);
-        
-        
-       
-    }
-}
 
 
 
@@ -71,34 +71,21 @@ include_once("includes/head.php");
         <div id="main-content" class="main-content">
 
             <!--Hero Section-->
-            <div class="hero-section hero-background">
-                <h1 class="page-title">
-                    <?php
-                   echo $ctg_info['ctg_name'];
-                    ?>
-                </h1>
-            </div>
+          
 
 
             <!--Navigation section-->
-            <div class="container">
-                <nav class="biolife-nav">
-                    <ul>
-                        <li class="nav-item"><a href="index.php" class="permal-link">Home</a></li>
-
-                        <li class="nav-item"><span class="current-page">
-
-                        <?php
-                   echo $ctg_info['ctg_name'];
-                    ?>
-                            </span></li>
-                    </ul>
-                </nav>
-            </div>
+           
 
 
             <!-- Product -->
             <div class="container">
+
+            <?php 
+                $search_item =count($search_results);
+             
+                echo "{$search_item} Items Found";
+            ?>
 
                 <div class="product-category grid-style">
 
@@ -106,21 +93,22 @@ include_once("includes/head.php");
                         <ul class="products-list">
 
                             <?php
-                            foreach ($pdt_datas as $pdt_data) {
+                            foreach ($search_results as $search_pdt) {
                             ?>
 
                                 <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                     <div class="contain-product layout-default">
                                         <div class="product-thumb">
-                                            <a href="single_product.php?status=singleproduct&&id=<?php echo $pdt_data['pdt_id'] ?>" class="link-to-product">
-                                                <img src="admin/uploads/<?php echo $pdt_data['pdt_img'] ?>" alt="dd" width="270" height="270" class="product-thumnail">
+                                            <a href="single_product.php?status=singleproduct&&id=<?php echo $search_pdt['pdt_id'] ?>" class="link-to-product">
+                                                <img src="admin/uploads/<?php echo $search_pdt['pdt_img'] ?>" alt="dd" width="270" height="270" class="product-thumnail">
                                             </a>
                                         </div>
                                         <div class="info">
-                                            <b class="categories"> <?php echo $pdt_data['ctg_name'] ?> </b>
-                                            <h4 class="product-title"><a href="single_product.php?status=singleproduct&&id=<?php echo $pdt_data['pdt_id'] ?>" class="pr-name"><?php echo $pdt_data['pdt_name'] ?></a></h4>
+                                        <b class="categories"> <?php echo $search_pdt['ctg_name'] ?> </b>
+                                            
+                                            <h4 class="product-title"><a href="single_product.php?status=singleproduct&&id=<?php echo $search_pdt['pdt_id'] ?>" class="pr-name"><?php echo $search_pdt['pdt_name'] ?></a></h4>
                                             <div class="price">
-                                                <ins><span class="price-amount"><span class="currencySymbol">Tk. </span><?php echo $pdt_data['pdt_price'] ?></span></ins>
+                                                <ins><span class="price-amount"><span class="currencySymbol">Tk. </span><?php echo $search_pdt['pdt_price'] ?></span></ins>
 
                                             </div>
                                             <div class="shipping-info">

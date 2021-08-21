@@ -27,7 +27,7 @@ if (isset($_POST['addtocart'])) {
                 'pdt_img' => $_POST['pdt_img'],
                 'pdt_id' => $_POST['pdt_id']
             );
-           print_r($_SESSION['cart']);
+           
         }
     } else {
         $_SESSION['cart'][0] = array(
@@ -167,23 +167,7 @@ include_once("includes/head.php");
                                 <div class="btn-checkout">
                                     <a href="userprofile.php" class="btn checkout">Check out</a>
                                 </div>
-                                <div class="biolife-progress-bar">
-                                    <table>
-                                        <tr>
-                                            <td class="first-position">
-                                                <span class="index">$0</span>
-                                            </td>
-                                            <td class="mid-position">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </td>
-                                            <td class="last-position">
-                                                <span class="index">$99</span>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
+                              
                                 <p class="pickup-info"><b>Free Pickup</b> is available as soon as today More about shipping and pickup</p>
                             </div>
                         </div>

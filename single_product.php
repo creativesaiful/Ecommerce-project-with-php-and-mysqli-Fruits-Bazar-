@@ -120,7 +120,8 @@ include_once("includes/head.php");
 
                         <div>
                                 <!-- summary info -->
-                               <form action="addtocart.php" method="POST">
+                            <form action="addtocart.php" method="POST">
+
                                <div class="sumary-product single-layout">
                                     <div class="media">
                                         <ul class="biolife-carousel slider-for" data-slick='{"arrows":false,"dots":false,"slidesMargin":30,"slidesToShow":1,"slidesToScroll":1,"fade":true,"asNavFor":".slider-nav"}'>
@@ -172,27 +173,15 @@ include_once("includes/head.php");
                                             <input type="hidden" name="pdt_id" value="<?php echo $pro_data['pdt_id'] ?>">
 
                                            <input type="submit" value="Add To Cart" class="btn btn-block btn-success" name="addtocart">
-                                            <p class="pull-row">
-                                                <a href="#" class="btn wishlist-btn">wishlist</a>
-                                                <a href="#" class="btn compare-btn">compare</a>
-                                            </p>
+                                         
                                         </div>
 
-
-                                        <div class="location-shipping-to">
-                                            <span class="title">Ship to:</span>
-                                            <select name="shipping_to" class="country">
-                                                <option value="-1">Select Country</option>
-                                                <option value="america">America</option>
-                                                <option value="france">France</option>
-                                                <option value="germany">Germany</option>
-                                                <option value="japan">Japan</option>
-                                            </select>
-                                        </div>
+                            </form>
+                                     
                                         <div class="social-media">
                                             <ul class="social-list">
                                                 <li><a href="#" class="social-link"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                                <li><a href="#" class="social-link"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                                <li><a href="www.facebook.com" class="social-link"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                                                 <li><a href="#" class="social-link"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
                                                 <li><a href="#" class="social-link"><i class="fa fa-share-alt" aria-hidden="true"></i></a></li>
                                                 <li><a href="#" class="social-link"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
@@ -507,11 +496,7 @@ include_once("includes/head.php");
                                                     </div>
                                                     <div class="slide-down-box">
                                                         <p class="message">All products are carefully selected to ensure food safety.</p>
-                                                        <div class="buttons">
-                                                            <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                                            <a href="addtocart.php" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>add to cart</a>
-                                                            <a href="single_product.php?status=singleproduct&&id=<?php echo $r_pro['pdt_id'] ?>" class="btn compare-btn"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                                        </div>
+                                                       
                                                     </div>
                                                 </div>
                                             </div>

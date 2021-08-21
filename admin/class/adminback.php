@@ -324,4 +324,48 @@ class  adminback
         session_destroy();
 
     }
+
+    function view_all_product(){
+        $query = "SELECT * FROM `product_info_ctg`";
+
+        if(mysqli_query($this->connection, $query)){
+            $pdt_info = mysqli_query($this->connection, $query);
+            return $pdt_info;
+        }
+    }
+
+    function display_five_catagory(){
+        $query = "SELECT * FROM `catagory` LIMIT 5";
+        if(mysqli_query($this->connection, $query)){
+            $catagories = mysqli_query($this->connection, $query);
+            return $catagories;
+        }
+    }
+
+    function display_five_products($ctg_id){
+        $query= "SELECT * FROM `product_info_ctg` WHERE `ctg_id`=$ctg_id LIMIT 8";
+
+        if(mysqli_query($this->connection, $query)){
+            $eight_product = mysqli_query($this->connection, $query);
+            return $eight_product;
+        }
+    }
+
+    function display_top_rated_pdt(){
+        $query= "SELECT * FROM `product_info_ctg` WHERE `pdt_price`>200  ORDER BY `pdt_price` LIMIT 12";
+
+        if(mysqli_query($this->connection, $query)){
+            $top_rated= mysqli_query($this->connection, $query);
+            return $top_rated;
+        }
+    }
+
+    function search_product($keyword){
+        $query = "SELECT * FROM `product_info_ctg` WHERE `pdt_name` LIKE '%$keyword%'";
+
+        if(mysqli_query($this->connection, $query)){
+            $search_query = mysqli_query($this->connection, $query);
+            return $search_query;
+        }
+    }
 }
