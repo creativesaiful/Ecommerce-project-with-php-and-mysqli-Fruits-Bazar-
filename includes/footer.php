@@ -102,7 +102,7 @@
                         <div class="separator sm-margin-top-62px xs-margin-top-40px"></div>
                     </div>
                     <div class="col-lg-6 col-sm-6 col-xs-12">
-                       <div class="copy-right-text"><p><a href="templateshub.net">Templates Hub</a></p></div>
+                       <div class="copy-right-text"><p>WE ACCEPT</p></div>
                     </div>
                     <div class="col-lg-6 col-sm-6 col-xs-12">
                         <div class="payment-methods">

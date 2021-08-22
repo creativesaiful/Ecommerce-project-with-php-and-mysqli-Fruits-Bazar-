@@ -80,12 +80,12 @@ include_once("includes/head.php");
                       
                                 <p class="form-row">
                                     <label for="username">Username:<span class="requite">*</span></label>
-                                    <input type="text" name="username" class="txt-input">
+                                    <input type="text" name="username" class="txt-input" required>
                                 </p>
 
                                 <p class="form-row">
                                     <label for="user_firstname">First Name<span class="requite">*</span></label>
-                                    <input type="text" name="user_firstname" class="txt-input">
+                                    <input type="text" name="user_firstname" class="txt-input" required>
                                 </p>
 
 
@@ -96,17 +96,17 @@ include_once("includes/head.php");
 
                                 <p class="form-row">
                                     <label for="user_email">Email <span class="requite">*</span> </label>
-                                    <input type="email" name="user_email">
+                                    <input type="email" name="user_email" required>
                                 </p>
 
                                 <p class="form-row">
                                     <label for="user_password">Password <span class="requite">*</span> </label>
-                                    <input type="password" id="fid-pass" name="user_password">
+                                    <input type="password" id="fid-pass" name="user_password" required>
                                 </p>
 
                                 <p class="form-row">
                                     <label for="user_mobile">Mobile <span class="requite">*</span> </label>
-                                    <input type="tel" id="fid-pass" name="user_mobile">
+                                    <input type="tel" id="fid-pass" name="user_mobile" required>
                                 </p>
 
                                 <input type="hidden" name="user_roles" value="5">

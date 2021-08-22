@@ -10,9 +10,9 @@ while ($data = mysqli_fetch_assoc($cata_info)) {
     $cataDatas[] = $data;
 }
 
-if (isset($_POST['user_login_btn'])) {
-    $logmsg = $obj->user_login($_POST);
-}
+// if (isset($_POST['user_login_btn'])) {
+//     $logmsg = $obj->user_login($_POST);
+// }
 
 $userid = $_SESSION['user_id'];
 $username = $_SESSION['username'];
@@ -35,6 +35,13 @@ if (isset($_GET['logout'])) {
         $obj->user_logout();
     }
 }
+
+if (isset($_POST['confirm_order'])) {
+    $obj->place_order($_POST);
+}
+
+
+
 
 ?>
 
@@ -77,7 +84,7 @@ include_once("includes/head.php");
 
 
             <div class="container">
-                <h2 class="text-center">Order Sumary</h2>
+
 
                 <div class="row">
                     <div class="col-md-2">
@@ -90,107 +97,143 @@ include_once("includes/head.php");
                     </div>
 
                     <div class="col-md-10">
+                        <h2 class="text-center">Order Sumary</h2>
 
                         <?php
 
 
-
-                        if (count($_SESSION['cart']) > 0) {
+                        if (isset($_SESSION['cart'])) {
+                            if (count($_SESSION['cart']) > 0) {
                         ?>
-                        
-                        <form class="shopping-cart-form" action="#" method="post">
-                            <table class="shop_table cart-form">
-                                <thead>
-                                    <tr>
-                                        <th class="product-name">Product Name</th>
-                                        <th class="product-price">Status</th>
-                                        <th class="product-quantity">Remove</th>
-                                        <th class="product-subtotal">Price</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    <?php if (isset($_SESSION['cart'])) {
-
-                                        $_SESSION['subtotal'] = 0;
-                                        $_SESSION['cart_pdt_number'] = 0;
-                                        foreach ($_SESSION['cart'] as $key => $value) {
-                                            $_SESSION['subtotal'] =  $_SESSION['subtotal'] + $value['pdt_price'];
-                                            $_SESSION['cart_pdt_number']++;
-                                    ?>
-                                            <tr class="cart_item">
-                                                <td class="product-thumbnail" data-title="Product Name">
-                                                    <a class="prd-thumb" href="single_product.php?status=singleproduct&&id=<?php echo $value['pdt_id'] ?>">
-                                                        <figure><img width="113" height="113" src="admin/uploads/<?php echo $value['pdt_img'] ?>" alt="shipping cart"></figure>
-                                                    </a>
-                                                    <a class="prd-name" href="single_product.php?status=singleproduct&&id=<?php echo $value['pdt_id'] ?>"><?php echo $value['pdt_name'] ?></a>
-
-                                                </td>
-                                                <td class="product-price" data-title="Price">
-                                                    <div class="price price-contain">
-                                                        <ins><span class="price-amount"><span class="currencySymbol"></span>Action</span></ins>
-
-                                                    </div>
-                                                </td>
-                                                <td class="product-quantity" data-title="Quantity">
-                                                    <form action="" method="POST">
-
-                                                        <input type="hidden" value="<?php echo $value['pdt_name'] ?>" name="remove_pdt_name">
-                                                        <input class="btn btn-warning" type="submit" value="Remove Product" name="remove_product">
-                                                    </form>
-                                                </td>
-                                                <td class="product-subtotal" data-title="Total">
-                                                    <div class="price price-contain">
-                                                        <ins><span class="price-amount"><span class="currencySymbol">Tk. </span><?php echo $value['pdt_price'] ?></span></ins>
-
-                                                    </div>
-                                                </td>
-                                            </tr>
-
-                                    <?php }
-                                    } else {
-                                        echo "Your cart is empty";
-                                    } ?>
-
-                                    <tr class="cart_item wrap-buttons">
-                                        <td class="wrap-btn-control" colspan="3">
-                                            <h2>Total ( <?php echo  $_SESSION['cart_pdt_number']; ?> Items)</h2>
-                                        </td>
-
-                                        <td>
-                                            <h2>Tk. <?php echo  $_SESSION['subtotal'] ?> </h2>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="cart_item wrap-buttons">
-                                        <td>
-                                            <h3 style="color: black;">Payment</h3>
-                                        </td>
-
-                                    </tr>
-
-                                    <tr class="cart_item wrap-buttons">
-                                        <td>
-                                            <h3 style="color: black;">Shiping Address</h3>
-                                        </td>
-                                        <td colspan="3"><input type="text" placeholder="Input shiping address" style="border: none; width:100%"></td>
-
-                                    </tr>
 
 
 
-                                </tbody>
-                            </table>
+
+                                <table class="shop_table cart-form">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-name">Product Name</th>
+                                            <th class="product-price">Quantity</th>
+                                            <th class="product-quantity">Remove</th>
+                                            <th class="product-subtotal">Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
 
-                            <div class="btn-checkout">
-                                <a href="paryment.php" class="btn btn-success btn-block btn-lg ">Confirm Order</a>
-                            </div>
-                        </form>
+
+                                        <?php if (isset($_SESSION['cart'])) {
+
+                                            $_SESSION['subtotal'] = 0;
+                                            $_SESSION['cart_pdt_number'] = 0;
+                                            $order_names='';
+
+
+                                            foreach ($_SESSION['cart'] as $key => $value) {
+                                                $_SESSION['subtotal'] =  $_SESSION['subtotal'] + $value['pdt_price'];
+                                                $_SESSION['cart_pdt_number']++;
+                                                $order_names = $value['pdt_name'] ."<br> ". $order_names;
+
+
+                                        ?>
+                                                <tr class="cart_item">
+                                                    <td class="product-thumbnail" data-title="Product Name">
+                                                        <a class="prd-thumb" href="single_product.php?status=singleproduct&&id=<?php echo $value['pdt_id'] ?>">
+                                                            <figure><img width="113" height="113" src="admin/uploads/<?php echo $value['pdt_img'] ?>" alt="shipping cart"></figure>
+                                                        </a>
+                                                        <a class="prd-name" href="single_product.php?status=singleproduct&&id=<?php echo $value['pdt_id'] ?>"><?php echo $value['pdt_name'] ?></a>
+
+                                                    </td>
+                                                    <td class="product-price" data-title="Price">
+                                                        <div class="">
+                                                           <input type="number" value="1" style="width: 65px;">
+
+                                                        </div>
+                                                    </td>
+                                                    <td class="product-quantity" data-title="Quantity">
+                                                        <form action="" method="POST">
+
+                                                            <input type="hidden" value="<?php echo $value['pdt_name'] ?>" name="remove_pdt_name">
+                                                            <input class="btn btn-warning" type="submit" value="Remove Product" name="remove_product">
+                                                        </form>
+                                                    </td>
+                                                    <td class="product-subtotal" data-title="Total">
+                                                        <div class="price price-contain">
+                                                            <ins><span class="price-amount"><span class="currencySymbol">Tk. </span><?php echo $value['pdt_price'] ?></span></ins>
+
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                        <?php }
+                                        } else {
+                                            echo "Your cart is empty";
+                                        } ?>
+
+                                        <tr class="cart_item wrap-buttons">
+                                            <td class="wrap-btn-control" colspan="3">
+                                                <h2>Total ( <?php echo  $_SESSION['cart_pdt_number']; ?> Items)</h2>
+                                            </td>
+
+                                            <td>
+                                                <h2>Tk. <?php echo $_SESSION['subtotal'] ?> </h2>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="cart_item wrap-buttons">
+                                            <td>
+                                                <h3 style="color: black;">Payment</h3>
+                                            </td>
+
+                                            <form class="shopping-cart-form" action="#" method="POST">
+
+                                            <td colspan="3">
+                                                <input type="text" style="border: none; width:100%;" placeholder="input bKash TXID" name="txid" required>
+                                            </td>
+
+                                        </tr>
+
+                                        <tr class="cart_item wrap-buttons">
+                                            <td>
+
+                                                <h3 style="color: black;">Shiping Address</h3>
+                                            </td>
+                                            <td colspan="3">
+
+
+                                                <input type="text" style="border: none; width:100%" placeholder="input courier service and location" name="shiping" required>
+                                            </td>
+
+                                        </tr>
+
+
+
+
+                                    </tbody>
+                                </table>
+
+
+                                
+
+                                    <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id'] ?>">
+                                    <input type="hidden" name="product_name" value="<?php echo $order_names ?>">
+                                    <input type="hidden" name="product_item" value="<?php echo $_SESSION['cart_pdt_number'] ?>">
+                                    <input type="hidden" name="amount" value="<?php echo $_SESSION['subtotal'] ?>">
+                                    <input type="hidden" name="order_status" value="0">
+
+
+
+                                    <div class="btn-checkout">
+
+                                        <input type="submit" class="btn btn-success btn-block btn-lg " value="Confirm Order" name="confirm_order">
+
+                                    </div>
+                                </form>
 
                         <?php
-                        } else {
-                            echo "your cart is empty";
+                            } else {
+                                echo "your cart is empty";
+                            }
                         }
                         ?>
 

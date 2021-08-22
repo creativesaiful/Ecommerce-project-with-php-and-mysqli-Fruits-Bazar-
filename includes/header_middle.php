@@ -1,3 +1,17 @@
+<?php 
+
+ini_set("display_errors","off");
+
+if (isset($_POST['remove_product'])) {
+    foreach ($_SESSION['cart'] as $key => $value) {
+        if ($value['pdt_name'] == $_POST['remove_pdt_name']) {
+            unset($_SESSION['cart'][$key]);
+            $_SESSION['cart'] = array_values($_SESSION['cart']);
+        }
+    }
+}
+?>
+
 <div class="header-middle biolife-sticky-object ">
     <div class="container">
         <div class="row">
@@ -13,8 +27,15 @@
                         <li class="menu-item"><a href="index.php">Home</a></li>
                         <li class="menu-item"><a href="all_product.php">All Product</a></li>
                         <li class="menu-item"><a href="#">About Us</a></li>
-                        <li class="menu-item"><a href="#">Contact</a></li>
+                       
                         <li class="menu-item"><a href="#">Privacy Policy </a></li>
+                        <?php 
+                            if(isset($_SESSION['user_id'])){
+                                 ?>
+                                  <li class="menu-item"><a href="exist_order.php">Dashboard </a></li>
+                                 <?php
+                            }
+                        ?>
 
 
                     </ul>
@@ -133,7 +154,7 @@
 
                                     </ul>
                                     <p class="btn-control">
-                                        <a href="userprofile.php" class="btn view-cart ">view cart</a>
+                                        <a href="userprofile.php" class="btn view-cart ">Check Out</a>
 
                                     </p>
                                 </div>

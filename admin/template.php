@@ -75,6 +75,8 @@
                                             include ("views/edit_cata_view.php");
                                         }elseif($views=="edit_product"){
                                             include ("views/edit_product_view.php");
+                                        }elseif($views=="manage_order"){
+                                            include ("views/manage_order_view.php");
                                         }
 
                                     }

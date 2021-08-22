@@ -1,4 +1,6 @@
 
+  
+
 <?php 
 
     $catagories = $obj-> display_catagory();

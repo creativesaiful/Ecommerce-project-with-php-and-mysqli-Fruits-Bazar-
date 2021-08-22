@@ -8,7 +8,7 @@
                                 <h3 class="second-line">Vegetables 100% Organic</h3>
                                 <p class="third-line">A blend of freshly squeezed green apple & fruits</p>
                                 <p class="buttons">
-                                    <a href="#" class="btn btn-bold">Shop now</a>
+                                    <a href="./all_product.php" class="btn btn-bold">Shop now</a>
                                     <a href="#" class="btn btn-thin">View lookbook</a>
                                 </p>
                             </div>
@@ -22,7 +22,7 @@
                                 <h3 class="second-line">Vegetables 100% Organic</h3>
                                 <p class="third-line">A blend of freshly squeezed green apple & fruits</p>
                                 <p class="buttons">
-                                    <a href="#" class="btn btn-bold">Shop now</a>
+                                    <a href="./all_product.php" class="btn btn-bold">Shop now</a>
                                     <a href="#" class="btn btn-thin">View lookbook</a>
                                 </p>
                             </div>
@@ -36,7 +36,7 @@
                                 <h3 class="second-line">Vegetables 100% Organic</h3>
                                 <p class="third-line">A blend of freshly squeezed green apple & fruits</p>
                                 <p class="buttons">
-                                    <a href="#" class="btn btn-bold">Shop now</a>
+                                    <a href="./all_product.php" class="btn btn-bold">Shop now</a>
                                     <a href="#" class="btn btn-thin">View lookbook</a>
                                 </p>
                             </div>
@@ -50,7 +50,7 @@
                                 <h3 class="second-line">Vegetables 100% Organic</h3>
                                 <p class="third-line">A blend of freshly squeezed green apple & fruits</p>
                                 <p class="buttons">
-                                    <a href="#" class="btn btn-bold">Shop now</a>
+                                    <a href="./all_product.php" class="btn btn-bold">Shop now</a>
                                     <a href="#" class="btn btn-thin">View lookbook</a>
                                 </p>
                             </div>
@@ -64,7 +64,7 @@
                                 <h3 class="second-line">Vegetables 100% Organic</h3>
                                 <p class="third-line">A blend of freshly squeezed green apple & fruits</p>
                                 <p class="buttons">
-                                    <a href="#" class="btn btn-bold">Shop now</a>
+                                    <a href="./all_product.php" class="btn btn-bold">Shop now</a>
                                     <a href="#" class="btn btn-thin">View lookbook</a>
                                 </p>
                             </div>
@@ -78,7 +78,7 @@
                                 <h3 class="second-line">Vegetables 100% Organic</h3>
                                 <p class="third-line">A blend of freshly squeezed green apple & fruits</p>
                                 <p class="buttons">
-                                    <a href="#" class="btn btn-bold">Shop now</a>
+                                    <a href="./all_product.php" class="btn btn-bold">Shop now</a>
                                     <a href="#" class="btn btn-thin">View lookbook</a>
                                 </p>
                             </div>
@@ -92,7 +92,7 @@
                                 <h3 class="second-line">Vegetables 100% Organic</h3>
                                 <p class="third-line">A blend of freshly squeezed green apple & fruits</p>
                                 <p class="buttons">
-                                    <a href="#" class="btn btn-bold">Shop now</a>
+                                    <a href="./all_product.php" class="btn btn-bold">Shop now</a>
                                     <a href="#" class="btn btn-thin">View lookbook</a>
                                 </p>
                             </div>
@@ -106,7 +106,7 @@
                                 <h3 class="second-line">Vegetables 100% Organic</h3>
                                 <p class="third-line">A blend of freshly squeezed green apple & fruits</p>
                                 <p class="buttons">
-                                    <a href="#" class="btn btn-bold">Shop now</a>
+                                    <a href="./all_product.php" class="btn btn-bold">Shop now</a>
                                     <a href="#" class="btn btn-thin">View lookbook</a>
                                 </p>
                             </div>
@@ -120,7 +120,7 @@
                                 <h3 class="second-line">Vegetables 100% Organic</h3>
                                 <p class="third-line">A blend of freshly squeezed green apple & fruits</p>
                                 <p class="buttons">
-                                    <a href="#" class="btn btn-bold">Shop now</a>
+                                    <a href="./all_product.php" class="btn btn-bold">Shop now</a>
                                     <a href="#" class="btn btn-thin">View lookbook</a>
                                 </p>
                             </div>
@@ -134,7 +134,7 @@
                                 <h3 class="second-line">Vegetables 100% Organic</h3>
                                 <p class="third-line">A blend of freshly squeezed green apple & fruits</p>
                                 <p class="buttons">
-                                    <a href="#" class="btn btn-bold">Shop now</a>
+                                    <a href="./all_product.php" class="btn btn-bold">Shop now</a>
                                     <a href="#" class="btn btn-thin">View lookbook</a>
                                 </p>
                             </div>

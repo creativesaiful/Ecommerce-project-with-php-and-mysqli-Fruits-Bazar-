@@ -368,4 +368,51 @@ class  adminback
             return $search_query;
         }
     }
+
+    function place_order($data){
+        $user_id = $data['user_id'];
+        $product_name = $data['product_name'];
+        $product_item = $data['product_item'];
+        $amount = $data['amount'];
+        $order_status = $data['order_status'];
+        $trans_id= $data['txid'];
+        $shiping= $data['shiping'];
+
+
+
+        $query = "INSERT INTO `order_details`(`user_id`, `product_name`, `product_item`, `amount`, `order_status`, `trans_id`, `shiping`, `order_time`) VALUES ( $user_id,'$product_name',$product_item, $amount, $order_status,'$trans_id','$shiping',NOW())";
+
+        if(mysqli_query($this->connection, $query)){
+            
+            unset ($_SESSION['cart']);
+            header("location:exist_order.php");
+        }
+    }
+
+    function order_details_by_id($user_id){
+        $query = "SELECT * FROM `order_details` WHERE `user_id`=$user_id";
+        if(mysqli_query($this->connection, $query)){
+            $order_query = mysqli_query($this->connection, $query);
+            return $order_query;
+        }
+    }
+
+    function all_order_info(){
+        $query = "SELECT * FROM `all_order_info`";
+
+        if(mysqli_query($this->connection, $query)){
+            $all_order_info = mysqli_query($this->connection, $query);
+            return $all_order_info;
+        }
+    } 
+
+    function updat_order_status($data){
+        $u_pdt_id = $data['order_id'];
+        $u_pdt_status = $data['update_status'];
+        $query = "UPDATE `order_details` SET `order_status`=  $u_pdt_status WHERE `order_id`= $u_pdt_id";
+        if(mysqli_query($this->connection, $query)){
+            $status_msg = "Order Status updated successfully";
+            return $status_msg;
+        }
+    }
 }
