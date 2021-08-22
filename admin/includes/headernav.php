@@ -94,22 +94,10 @@
                                    <i class="ti-angle-down"></i>
                                </a>
                                <ul class="show-notification profile-notification">
-                                   <li>
-                                       <a href="#!">
-                                           <i class="ti-settings"></i> Settings
-                                       </a>
-                                   </li>
-                                   <li>
-                                       <a href="user-profile.html">
-                                           <i class="ti-user"></i> Profile
-                                       </a>
-                                   </li>
                                    
-                                   <li>
-                                       <a href="auth-lock-screen.html">
-                                           <i class="ti-lock"></i> Lock Screen
-                                       </a>
-                                   </li>
+                                
+                                   
+                                  
                                    <li>
                                        <a href="?adminLogout=logout">
                                        <i class="ti-layout-sidebar-left"></i> Logout
