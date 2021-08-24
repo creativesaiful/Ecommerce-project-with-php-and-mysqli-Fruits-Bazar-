@@ -141,7 +141,7 @@ include_once("includes/head.php");
                                         <span class="sku">Sku: <?php echo $pro_data['pdt_id']?></span>
                                         <p class="excerpt"><?php echo $pro_data['pdt_des']?></p>
                                         <div class="price">
-                                            <ins><span class="price-amount"><span class="currencySymbol">$</span><?php echo $pro_data['pdt_price']?></span></ins>
+                                            <ins><span class="price-amount"><span class="currencySymbol">Tk. </span><?php echo $pro_data['pdt_price']?></span></ins>
                                             
                                         </div>
 
@@ -154,7 +154,7 @@ include_once("includes/head.php");
                                        
                                         <div class="total-price-contain">
                                             <span class="title">Total Price:</span>
-                                            <p class="price">$
+                                            <p class="price">Tk. 
                                                 <?php 
                                                    
                                                         echo $pro_data['pdt_price'];
@@ -204,7 +204,7 @@ include_once("includes/head.php");
                                     <div class="tab-head">
                                         <ul class="tabs">
                                             <li class="tab-element active"><a href="#tab_1st" class="tab-link">Products Descriptions</a></li>
-                                            <li class="tab-element"><a href="#tab_2nd" class="tab-link">Addtional information</a></li>
+                                          
                                             <li class="tab-element"><a href="#tab_3rd" class="tab-link">Shipping & Delivery</a></li>
                                             <li class="tab-element"><a href="#tab_4th" class="tab-link">Customer Reviews <sup>(3)</sup></a></li>
                                         </ul>
@@ -222,24 +222,7 @@ include_once("includes/head.php");
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div id="tab_2nd" class="tab-contain addtional-info-tab">
-                                            <table class="tbl_attributes">
-                                                <tbody>
-                                                    <tr>
-                                                        <th>Color</th>
-                                                        <td>
-                                                            <p>Black, Blue, Purple, Red, Yellow</p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Size</th>
-                                                        <td>
-                                                            <p>S, M, L</p>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                      
                                         <div id="tab_3rd" class="tab-contain shipping-delivery-tab">
                                             <div class="accodition-tab biolife-accodition">
                                                 <ul class="tabs">
@@ -345,13 +328,22 @@ include_once("includes/head.php");
                                                             </ul>
                                                         </div>
                                                     </div>
+
+
+
                                                     <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
                                                         <div class="review-form-wrapper">
                                                             <span class="title">Submit your review</span>
                                                             <form action="#" name="frm-review" method="post">
                                                                 <div class="comment-form-rating">
                                                                     <label>1. Your rating of this products:</label>
-                                                                    <p class="stars">
+
+                                                                    <input type="radio" name="start" value="5">
+                                                                    <input type="radio" name="start" value="5">
+                                                                    <input type="radio" name="start" value="5">
+                                                                    <input type="radio" name="start" value="5">
+                                                                    <input type="radio" name="start" value="5">
+                                                                    <!-- <p class="stars">
                                                                         <span>
                                                                             <a class="btn-rating" data-value="star-1" href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
                                                                             <a class="btn-rating" data-value="star-2" href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
@@ -359,23 +351,41 @@ include_once("includes/head.php");
                                                                             <a class="btn-rating" data-value="star-4" href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
                                                                             <a class="btn-rating" data-value="star-5" href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
                                                                         </span>
-                                                                    </p>
+
+                                                                        <input type="radio" name="rating" id="">
+                                                                    
+                                                                    </p> -->
+
+                                                                   
                                                                 </div>
+
+                                                               
                                                                 <p class="form-row wide-half">
-                                                                    <input type="text" name="name" value="" placeholder="Your name">
+                                                                    <input type="text" name="full_name" value="" placeholder="Your name">
                                                                 </p>
-                                                                <p class="form-row wide-half">
-                                                                    <input type="email" name="email" value="" placeholder="Email address">
-                                                                </p>
+                                                               
                                                                 <p class="form-row">
                                                                     <textarea name="comment" id="txt-comment" cols="30" rows="10" placeholder="Write your review here..."></textarea>
                                                                 </p>
+
+
+                                                                <input type="hidden" value="<?php echo $_SESSION['user_id']?>" name="user_id">
+                                                                <input type="hidden" value="<?php echo  $_SESSION['username']?>" name="user_name">
+                                                                <input type="hidden" value="<?php echo $_GET['id']?>" name="pdt_it">
+
+
                                                                 <p class="form-row">
                                                                     <button type="submit" name="submit">submit review</button>
                                                                 </p>
+
+                                                                
+
+
                                                             </form>
                                                         </div>
                                                     </div>
+
+
                                                 </div>
                                                 <div id="comments">
                                                     <ol class="commentlist">

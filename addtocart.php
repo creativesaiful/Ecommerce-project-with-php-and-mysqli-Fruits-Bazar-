@@ -97,9 +97,9 @@ include_once("includes/head.php");
                                     <thead>
                                         <tr>
                                             <th class="product-name">Product Name</th>
-                                            <th class="product-price">Price</th>
+                                            <th class="product-price">Price (Tk)</th>
                                             <th class="product-quantity">Remove</th>
-                                            <th class="product-subtotal">Total</th>
+                                            <th class="product-subtotal">Total (TK)</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -122,7 +122,7 @@ include_once("includes/head.php");
                                             </td>
                                             <td class="product-price" data-title="Price">
                                                 <div class="price price-contain">
-                                                    <ins><span class="price-amount"><span class="currencySymbol">$</span><?php echo $value['pdt_price'] ?></span></ins>
+                                                    <ins><span class="price-amount"><span class="currencySymbol"></span><?php echo $value['pdt_price'] ?></span></ins>
                                                     
                                                 </div>
                                             </td>
@@ -135,7 +135,7 @@ include_once("includes/head.php");
                                             </td>
                                             <td class="product-subtotal" data-title="Total">
                                                 <div class="price price-contain">
-                                                    <ins><span class="price-amount"><span class="currencySymbol">$</span><?php echo $value['pdt_price'] ?></span></ins>
+                                                    <ins><span class="price-amount"><span class="currencySymbol"></span><?php echo $value['pdt_price'] ?></span></ins>
                                                    
                                                 </div>
                                             </td>
@@ -154,11 +154,11 @@ include_once("includes/head.php");
                             <div class="shpcart-subtotal-block">
                                 <div class="subtotal-line">
                                     <b class="stt-name">Subtotal <span class="sub">(<?php echo  $total_product.'Items' ?>)</span></b>
-                                    <span class="stt-price">$ <?php echo $subtotal; ?></span>
+                                    <span class="stt-price">Tk. <?php echo $subtotal; ?></span>
                                 </div>
                                 <div class="subtotal-line">
                                     <b class="stt-name">Shipping</b>
-                                    <span class="stt-price">$0.00</span>
+                                    <span class="stt-price">Tk. 0.00</span>
                                 </div>
                                 <div class="tax-fee">
                                     <p class="title">Est. Taxes & Fees</p>

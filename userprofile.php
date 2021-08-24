@@ -1,3 +1,5 @@
+
+
 <?php
 
 session_start();
@@ -115,7 +117,7 @@ include_once("includes/head.php");
                                             <th class="product-name">Product Name</th>
                                             <th class="product-price">Quantity</th>
                                             <th class="product-quantity">Remove</th>
-                                            <th class="product-subtotal">Price</th>
+                                            <th class="product-subtotal">Sub Total</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -127,7 +129,7 @@ include_once("includes/head.php");
                                             $_SESSION['subtotal'] = 0;
                                             $_SESSION['cart_pdt_number'] = 0;
                                             $order_names='';
-
+ 
 
                                             foreach ($_SESSION['cart'] as $key => $value) {
                                                 $_SESSION['subtotal'] =  $_SESSION['subtotal'] + $value['pdt_price'];
@@ -146,7 +148,7 @@ include_once("includes/head.php");
                                                     </td>
                                                     <td class="product-price" data-title="Price">
                                                         <div class="">
-                                                           <input type="number" value="1" style="width: 65px;">
+                                                           <input type="number" value="1" class="quantity" style="width: 65px;">
 
                                                         </div>
                                                     </td>
@@ -159,11 +161,13 @@ include_once("includes/head.php");
                                                     </td>
                                                     <td class="product-subtotal" data-title="Total">
                                                         <div class="price price-contain">
-                                                            <ins><span class="price-amount"><span class="currencySymbol">Tk. </span><?php echo $value['pdt_price'] ?></span></ins>
+                                                            <ins><span class="price-amount pdt_price"><?php echo $value['pdt_price'] ?></span></ins>
 
                                                         </div>
                                                     </td>
                                                 </tr>
+
+                                               
 
                                         <?php }
                                         } else {
