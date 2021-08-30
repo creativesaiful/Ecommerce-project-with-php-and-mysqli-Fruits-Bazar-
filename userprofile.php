@@ -1,5 +1,3 @@
-
-
 <?php
 
 session_start();
@@ -128,13 +126,13 @@ include_once("includes/head.php");
 
                                             $_SESSION['subtotal'] = 0;
                                             $_SESSION['cart_pdt_number'] = 0;
-                                            $order_names='';
- 
+                                            $order_names = '';
+
 
                                             foreach ($_SESSION['cart'] as $key => $value) {
                                                 $_SESSION['subtotal'] =  $_SESSION['subtotal'] + $value['pdt_price'];
                                                 $_SESSION['cart_pdt_number']++;
-                                                $order_names = $value['pdt_name'] ."<br> ". $order_names;
+                                                $order_names = $value['pdt_name'] . "<br> " . $order_names;
 
 
                                         ?>
@@ -148,7 +146,7 @@ include_once("includes/head.php");
                                                     </td>
                                                     <td class="product-price" data-title="Price">
                                                         <div class="">
-                                                           <input type="number" value="1" class="quantity" style="width: 65px;">
+                                                            <input type="number" value="1" name="quantity" class="quantity" style="width: 65px;">
 
                                                         </div>
                                                     </td>
@@ -161,18 +159,22 @@ include_once("includes/head.php");
                                                     </td>
                                                     <td class="product-subtotal" data-title="Total">
                                                         <div class="price price-contain">
-                                                            <ins><span class="price-amount pdt_price"><?php echo $value['pdt_price'] ?></span></ins>
-
+                                                            <ins><span class="price-amount "><?php echo $value['pdt_price'] ?></span></ins>
+                                                           
                                                         </div>
                                                     </td>
                                                 </tr>
 
-                                               
+
+
+
 
                                         <?php }
                                         } else {
                                             echo "Your cart is empty";
                                         } ?>
+
+                                      
 
                                         <tr class="cart_item wrap-buttons">
                                             <td class="wrap-btn-control" colspan="3">
@@ -191,9 +193,9 @@ include_once("includes/head.php");
 
                                             <form class="shopping-cart-form" action="#" method="POST">
 
-                                            <td colspan="3">
-                                                <input type="text" style="border: none; width:100%;" placeholder="input bKash TXID" name="txid" required>
-                                            </td>
+                                                <td colspan="3">
+                                                    <input type="text" style="border: none; width:100%;" placeholder="input bKash TXID" name="txid" required>
+                                                </td>
 
                                         </tr>
 
@@ -217,21 +219,21 @@ include_once("includes/head.php");
                                 </table>
 
 
-                                
-
-                                    <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id'] ?>">
-                                    <input type="hidden" name="product_name" value="<?php echo $order_names ?>">
-                                    <input type="hidden" name="product_item" value="<?php echo $_SESSION['cart_pdt_number'] ?>">
-                                    <input type="hidden" name="amount" value="<?php echo $_SESSION['subtotal'] ?>">
-                                    <input type="hidden" name="order_status" value="0">
 
 
+                                <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id'] ?>">
+                                <input type="hidden" name="product_name" value="<?php echo $order_names ?>">
+                                <input type="hidden" name="product_item" value="<?php echo $_SESSION['cart_pdt_number'] ?>">
+                                <input type="hidden" name="amount" value="<?php echo $_SESSION['subtotal'] ?>">
+                                <input type="hidden" name="order_status" value="0">
 
-                                    <div class="btn-checkout">
 
-                                        <input type="submit" class="btn btn-success btn-block btn-lg " value="Confirm Order" name="confirm_order">
 
-                                    </div>
+                                <div class="btn-checkout">
+
+                                    <input type="submit" class="btn btn-success btn-block btn-lg " value="Confirm Order" name="confirm_order">
+
+                                </div>
                                 </form>
 
                         <?php

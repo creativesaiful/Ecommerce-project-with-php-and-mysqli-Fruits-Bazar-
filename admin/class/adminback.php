@@ -33,7 +33,8 @@ class  adminback
                 $_SESSION['admin_id'] = $admin_info['admin_id'];
                 $_SESSION['admin_email'] = $admin_info['admin_email'];
             } else {
-                echo "Email or password wrong";
+                $log_msg= "Email or password wrong";
+                return $log_msg;
             }
         }
     }
@@ -43,6 +44,16 @@ class  adminback
         unset ($_SESSION['admin_email']);
         header("location:index.php");
         session_destroy();
+
+    }
+
+    function admin_password_recover($recover_email){
+        $query = "SELECT * FROM `admin_info` WHERE `admin_email`='$recover_email'";
+        if( mysqli_query($this->connection, $query)){
+            $row =  mysqli_query($this->connection, $query);
+            return $row;
+        }
+        
 
     }
 
@@ -414,5 +425,15 @@ class  adminback
             $status_msg = "Order Status updated successfully";
             return $status_msg;
         }
+    }
+
+    function user_password_recover($recover_email){
+        $query = "SELECT * FROM `users` WHERE `user_email`='$recover_email'";
+        if( mysqli_query($this->connection, $query)){
+            $row =  mysqli_query($this->connection, $query);
+            return $row;
+        }
+        
+
     }
 }

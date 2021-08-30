@@ -3,7 +3,7 @@
     $obj= new adminback();
 
     if(isset($_POST['admin_btn'])){
-        $obj->admin_login($_POST);
+        $log_msg = $obj->admin_login($_POST);
     }
     session_start();
     if(isset($_SESSION['admin_id'])){
@@ -26,12 +26,19 @@
                     <div class="login-card card-block auth-body mr-auto ml-auto">
                         <form action="" method="post" class="md-float-material">
                             <div class="text-center">
-                                <img src="assets/images/logo.png" alt="logo.png">
+                              
                             </div>
                             <div class="auth-box">
                                 <div class="row m-b-20">
                                     <div class="col-md-12">
                                         <h3 class="text-left txt-primary">Sign In</h3>
+                                        <h6 class="text-danger text-left">
+                                            <?php 
+                                                if(isset($log_msg)){
+                                                    echo $log_msg;
+                                                }
+                                            ?>
+                                        </h6>
                                     </div>
                                 </div>
                                 <hr/>
@@ -54,7 +61,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-5 col-xs-12 forgot-phone text-right">
-                                        <a href="auth-reset-password.html" class="text-right f-w-600 text-inverse"> Forgot Your Password?</a>
+                                        <a href="admin_password_recover.php" class="text-right f-w-600 text-inverse"> Forgot Your Password?</a>
                                     </div>
                                 </div>
                                 <div class="row m-t-30">

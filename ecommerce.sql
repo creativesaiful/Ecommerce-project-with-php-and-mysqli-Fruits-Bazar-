@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 22, 2021 at 10:32 AM
+-- Generation Time: Aug 30, 2021 at 12:48 PM
 -- Server version: 10.4.20-MariaDB
--- PHP Version: 7.4.21
+-- PHP Version: 7.4.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,7 +38,7 @@ CREATE TABLE `admin_info` (
 --
 
 INSERT INTO `admin_info` (`admin_id`, `admin_email`, `admin_pass`) VALUES
-(1, 'admin@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055');
+(1, 'saifulislamsapon@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055');
 
 -- --------------------------------------------------------
 
@@ -86,6 +86,22 @@ INSERT INTO `catagory` (`ctg_id`, `ctg_name`, `ctg_des`, `ctg_status`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `customer_review`
+--
+
+CREATE TABLE `customer_review` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `user_full_name` varchar(50) NOT NULL,
+  `pdt_id` int(11) NOT NULL,
+  `review_star` int(11) NOT NULL,
+  `comment` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `order_details`
 --
 
@@ -109,7 +125,7 @@ INSERT INTO `order_details` (`order_id`, `user_id`, `product_name`, `product_ite
 (1, 3, 'Banana (Chini Chompa) (1 P), ', 1, 10, 2, '0', '', '2021-08-21 18:57:21'),
 (3, 2, 'Banana (Shobri) (1 P), Apple Fuji(1 Kg), ', 2, 218, 2, '3241654', 'CharJabbar, Subarna Char Noakhali', '2021-08-21 19:28:37'),
 (4, 2, ' Apple Golden Delicious (1kg), Apple Fuji(1 Kg), ', 2, 458, 1, '3241654', 'CharJabbar, Subarna Char Noakhali', '2021-08-22 04:57:00'),
-(5, 2, 'Grapes White (Kg)<br> Banana (Chini Chompa) (1 P)<br> ', 2, 260, 0, '3241654', 'CharJabbar, Subarna Char Noakhali', '2021-08-22 04:59:04');
+(5, 2, 'Grapes White (Kg)<br> Banana (Chini Chompa) (1 P)<br> ', 2, 260, 2, '3241654', 'CharJabbar, Subarna Char Noakhali', '2021-08-22 04:59:04');
 
 -- --------------------------------------------------------
 
@@ -183,7 +199,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_name`, `user_firstname`, `user_lastname`, `user_email`, `user_password`, `user_mobile`, `user_roles`, `created_at`, `modified_at`) VALUES
-(1, 'saiful', ' saiful', ' islam', 'saiful@gmail.com', '202cb962ac59075b964b07152d234b70', 1246798, 5, '2021-08-21 13:38:23', '2021-08-21 13:38:23'),
+(1, 'saiful', ' saiful', ' islam', 'saifulislamsapon@gmail.com', '202cb962ac59075b964b07152d234b70', 1246798, 5, '2021-08-21 13:38:23', '2021-08-21 13:38:23'),
 (2, 'Yearul', ' Yerarul', ' islam', 'yearul@gmail.com', '202cb962ac59075b964b07152d234b70', 1246798, 5, '2021-08-21 13:38:23', '2021-08-21 13:38:23'),
 (3, 'Omar6627', ' Omar Bin', ' Faruk', 'omarbfaruk@gmail.com', 'ad126b79a449eb003915c3917c8a30e1', 1684734323, 5, '2021-08-21 18:56:24', '2021-08-21 18:56:24');
 
@@ -252,6 +268,12 @@ ALTER TABLE `catagory`
   ADD PRIMARY KEY (`ctg_id`);
 
 --
+-- Indexes for table `customer_review`
+--
+ALTER TABLE `customer_review`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `order_details`
 --
 ALTER TABLE `order_details`
@@ -298,6 +320,12 @@ ALTER TABLE `admin_info`
 --
 ALTER TABLE `catagory`
   MODIFY `ctg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `customer_review`
+--
+ALTER TABLE `customer_review`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `order_details`
