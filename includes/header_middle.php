@@ -16,7 +16,7 @@ if (isset($_POST['remove_product'])) {
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-2 col-md-6 col-xs-6">
-                <a href="index.php" class="biolife-logo"><img src="assets/images/organic-3-green.png" alt="biolife logo" width="135" height="36"></a>
+                <a href="index.php" class="biolife-logo"><img src="assets/images/organic-4-green-01.png" alt="biolife logo" width="135" height="36"></a>
             </div>
             <div class="col-lg-6 col-md-7 hidden-sm hidden-xs">
                 <div class="primary-menu">

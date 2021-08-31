@@ -57,6 +57,20 @@ class  adminback
 
     }
 
+    function update_admin_password($data){
+        $u_admin_id = $data['admin_update_id'];
+        $u_admin_pass = md5($data['admin_update_password']);
+
+        $query="UPDATE `admin_info` SET `admin_pass`='$u_admin_pass' WHERE `admin_id`= $u_admin_id";
+
+        if(mysqli_query($this->connection, $query)){
+            $update_mag = "You password updated successfull";
+            return $update_mag;
+        }else{
+            return "Failed";
+        }
+    }
+
     function add_catagory($data){
         $ctg_name = $data['ctg_name'];
         $ctg_des = $data['ctg_des'];
@@ -433,7 +447,23 @@ class  adminback
             $row =  mysqli_query($this->connection, $query);
             return $row;
         }
+    }
+
+    function update_user_password($data){
+
+        $update_id = $data['update_user_id'];
+        $update_password = md5($data['update_user_password']);
+
+        // echo $update_id.$update_password;
+
+        $query = "UPDATE `users` SET `user_password`='$update_password' WHERE `user_id`=$update_id";
         
 
+        if(mysqli_query($this->connection, $query)){
+            $update_mag = "You password updated successfull";
+            return $update_mag;
+        }else{
+            return "Please enter a correct email";
+        }
     }
 }

@@ -10,37 +10,16 @@
         header("location:dashboard.php");
     }
 
-    if (isset($_POST['admin_recover'])) {
-        $recover_email = $_POST['recover_email'];
-        $rec_row = $obj->admin_password_recover($recover_email);
-    
-        $num_row = mysqli_num_rows($rec_row);
-        $rec_msg = "";
-    
-        if ($num_row > 0) {
-            $rec_result = mysqli_fetch_assoc($rec_row);
-            $rec_id = $rec_result['admin_id'];
-           
-            $rec_email = $rec_result['admin_email'];
-            $rec_pass = $rec_result['admin_pass'];
-    
-            $to_email = $rec_email;
-            $subject = "Password Recovery from Fruits Bazar";
-            $body = "Dear".PHP_EOL."Please visit this link to reset your password:https://localhost/projects/Fruits_bazar_ecommerce_project/admin/admin_password_update.php?status=update&&id={$rec_id}".PHP_EOL."Thank you";
-            $headers = "From: graphicsapon@gmail.com";
-    
-            if (mail($to_email, $subject, $body, $headers)) {
-                $rec_msg= "Email successfully sent to $to_email...";
-               
-            } else {
-                $rec_msg = "Email sending failed...";
-            }
-    
-    
-        } else {
-            $rec_msg = "Sorry !!! you have no account";
+    if(isset($_GET['status'])){
+        if($_GET['status']=="update"){
+            $u_admin_id = $_GET['id'];
         }
     }
+
+    if(isset($_POST['u_admin_btn'])){
+       $update_msg =  $obj->update_admin_password($_POST);
+    }
+
 ?>
 
 <?php 
@@ -63,12 +42,12 @@
                             <div class="auth-box">
                                 <div class="row m-b-20">
                                     <div class="col-md-12">
-                                        <h3 class="text-left txt-primary">Recover Password</h3>
+                                        <h3 class="text-left txt-primary">Update Password</h3>
 
-                                        <p style="color: Black;">
+                                        <p style="color: Black; " class="text-left">
                                             <?php 
-                                                if(isset($rec_msg)){
-                                                    echo $rec_msg;
+                                                if(isset($update_msg)){
+                                                    echo $update_msg;
                                                 }
                                             ?>
                                         </p>
@@ -76,15 +55,15 @@
                                 </div>
                                 <hr/> <br>
                                 <div class="input-group">
-                                    <input type="email" class="form-control" placeholder="Your Email Address" name="recover_email" required>
+                                    <input type="password" class="form-control" placeholder="New password" name="admin_update_password" required>
                                     <span class="md-line"></span>
                                 </div>
 
                                
-                                
+                                 <input type="hidden" value="<?php echo $u_admin_id ?>" name="admin_update_id">
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
-                                        <input type="submit" name="admin_recover" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" value="Recover Passsowrd">
+                                        <input type="submit" name="u_admin_btn" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" value="Recover Passsowrd">
                                     </div>
                                 </div>
 
