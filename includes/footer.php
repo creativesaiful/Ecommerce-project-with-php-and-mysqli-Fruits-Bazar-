@@ -1,3 +1,10 @@
+<?php 
+$obj= new adminback();
+    $links = $obj->display_links();
+    $link = mysqli_fetch_assoc($links);
+   
+
+?>
 <footer id="footer" class="footer layout-03">
         <div class="footer-content background-footer-03">
             <div class="container">
@@ -9,7 +16,16 @@
                                 <i class="biolife-icon icon-head-phone"></i>
                                 <p class="r-info">
                                     <span>Got Questions ?</span>
-                                    <span>(700)  9001-1909  (900) 689 -66</span>
+                                    <span class="h4"> <a class="fa fa-envelope" href="#" style="color: gray; font-size:24px"> &nbsp;
+                           <?php 
+                            
+                            
+                             echo $link['phone'];
+
+                             ?>
+                             
+
+                          </a></span>
                                 </p>
                             </div>
                             <div class="newsletter-block layout-01">
@@ -68,14 +84,14 @@
                                     <li>
                                         <p class="info-item">
                                             <i class="biolife-icon icon-phone"></i>
-                                            <b class="desc">Phone: (+067) 234 789  (+068) 222 888</b>
+                                            <b class="desc">Phone: <?php echo $link['phone'] ?></b>
                                         </p>
                                     </li>
                                     <li>
                                         <p class="info-item">
                                             <i class="biolife-icon icon-letter"></i>
-                                            <b class="desc">Email:  contact@company.com</b>
-                                        </p>
+                                            <b class="desc">Email:  <?php echo $link['email'] ?></b>
+                                        </p>  
                                     </li>
                                     <li>
                                         <p class="info-item">
@@ -87,11 +103,10 @@
                             </div>
                             <div class="biolife-social inline">
                                 <ul class="socials">
-                                    <li><a href="#" title="twitter" class="socail-btn"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                    <li><a href="#" title="facebook" class="socail-btn"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#" title="pinterest" class="socail-btn"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                    <li><a href="#" title="youtube" class="socail-btn"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
-                                    <li><a href="#" title="instagram" class="socail-btn"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                    <li><a href="<?php echo $link['tweeter'] ?>" title="twitter" class="socail-btn"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="<?php echo $link['fb_link'] ?>" title="facebook" class="socail-btn"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="<?php echo $link['pinterest'] ?>" title="pinterest" class="socail-btn"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                                   
                                 </ul>
                             </div>
                         </section>

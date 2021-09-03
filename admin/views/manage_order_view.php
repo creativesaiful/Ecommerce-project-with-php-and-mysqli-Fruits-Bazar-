@@ -66,7 +66,7 @@ if(isset( $status_msg)){
                 </td>
 
                 <td class="product-subtotal">
-                    <form action="" method="POST">
+                    <form action="manage_order.php" method="POST">
                         <select name="update_status">
                         <option>Select</option>
                             <option value="0">Pending</option>

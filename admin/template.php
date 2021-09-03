@@ -23,9 +23,7 @@
   <body>
   <body>
 	  <div class="fixed-button">
-		<a href="https://codedthemes.com/item/gradient-able-admin-template" target="_blank" class="btn btn-md btn-primary">
-			<i class="fa fa-shopping-cart" aria-hidden="true"></i> Upgrade To Pro
-		</a>
+		
 	  </div>
        <!-- Pre-loader start -->
     <div class="theme-loader">
@@ -77,6 +75,20 @@
                                             include ("views/edit_product_view.php");
                                         }elseif($views=="manage_order"){
                                             include ("views/manage_order_view.php");
+                                        }elseif($views=="add_link"){
+                                            include ("views/add_links_view.php");
+                                        }elseif($views=="edit_logo"){
+                                            include ("views/edit_logo_view.php");
+                                        }elseif($views=="add_logo"){
+                                            include ("views/add_logo_view.php");
+                                        }elseif($views=="edit_links"){
+                                            include ("views/edit_links_view.php");
+                                        }elseif($views=="manage_slider"){
+                                            include ("views/manage_slider_view.php");
+                                        }elseif($views=="edit_slider"){
+                                            include ("views/edit_slider_view.php");
+                                        }elseif($views=="add_order"){
+                                            include ("views/add_order_view.php");
                                         }
 
                                     }

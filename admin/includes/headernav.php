@@ -16,7 +16,15 @@
                            </div>
                        </div>
                        <a href="index.php">
-                           <img class="img-fluid" src="assets/images/logo.png" alt="Theme-Logo" />
+
+                       <?php 
+                        $obj=new adminback();
+                        $logo_info = $obj->display_logo();
+
+                        $logo = mysqli_fetch_assoc($logo_info);
+
+                       ?>
+                           <img class="img-fluid" src="uploads/<?php echo $logo['img']; ?>" alt="Theme-Logo" /> 
                        </a>
                        <a class="mobile-options">
                            <i class="ti-more"></i>

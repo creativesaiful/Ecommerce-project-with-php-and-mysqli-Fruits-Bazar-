@@ -42,14 +42,14 @@
                     if($ctg['ctg_status']==0)
                     {echo "Unpublished";
                     
-                         ?>
-                         <a href="?status=published&&id=<?php echo $ctg['ctg_id'] ?>" class="btn btn-sm btn-success">Published</a>
+                         ?> 
+                         <a href="?status=published&&id=<?php echo $ctg['ctg_id'] ?>" class="btn btn-sm btn-success">Make Published</a>
                         <?php
-                    }
+                    } 
                     else{echo "Published";
                     
                     ?>
-                     <a href="?status=unpublished&&id=<?php echo $ctg['ctg_id'] ?>" class="btn btn-sm btn-warning">Unpublished</a>
+                     <a href="?status=unpublished&&id=<?php echo $ctg['ctg_id'] ?>" class="btn btn-sm btn-warning">Make Unpublished</a>
                         <?php 
                     }  
                     

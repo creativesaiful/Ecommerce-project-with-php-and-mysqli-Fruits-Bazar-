@@ -10,13 +10,36 @@ if (isset($_POST['remove_product'])) {
         }
     }
 }
+
+    $obj=new adminback();
+   $logo_info = $obj->display_logo();
+   
+
+
+
 ?>
 
+<?php 
+    if(isset($del_msg)){
+        echo "{$del_msg}";
+    }
+?>
 <div class="header-middle biolife-sticky-object ">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-2 col-md-6 col-xs-6">
-                <a href="index.php" class="biolife-logo"><img src="assets/images/organic-4-green-01.png" alt="biolife logo" width="135" height="36"></a>
+                <a href="index.php" class="biolife-logo">
+
+
+
+    <?php while($logo = mysqli_fetch_assoc( $logo_info)) {
+
+        ?>
+                    <img src="admin/uploads/<?php echo $logo['img']; ?>" alt="biolife logo" width="135" height="36">
+
+
+                </a>
+            <?php } ?>
             </div>
             <div class="col-lg-6 col-md-7 hidden-sm hidden-xs">
                 <div class="primary-menu">
