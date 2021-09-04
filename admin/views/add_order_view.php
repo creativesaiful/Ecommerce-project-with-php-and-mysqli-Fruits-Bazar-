@@ -51,11 +51,11 @@
 
              html += '<td><select name="product_name[]" class="form-control product_name" id="product_name' + count + '" data-product-id=' + count + '><option value="">Select Product</option> </select></td>';
 
-             html += '<td> <span name="product_price[]" class="form-control product_price" id="product_price' + count + '"> </span> </td>';
+             html += '<td> <span name="product_price[]" class="form-control product_price" id="product_price' + count + '" data-product-price=' + count + '> </span> </td>';
 
-             html += '<td> <input type="number" value="1" name="product_quantity[]" class="form-control product_quantity" id="product_quantity">  </td>';
+             html += '<td> <input type="number" value="1" name="product_quantity[]" class="form-control product_quantity" id="product_quantity' + count + '">  </td>';
 
-             html += '<td> <span name="total_price[]" class="form-control total_price" id="total_price"> </span> </td>';
+             html += '<td> <span name="total_price[]" class="form-control total_price" id="total_price' + count + '"> </span> </td>';
 
              html += '<td><button type="button" name="remove" class="btn btn-danger remove">Remove</button></td>';
 
@@ -91,7 +91,7 @@
                  }
              })
 
-         });
+         })
 
 
          $(document).on('change', '.product_name', function() {
@@ -114,14 +114,72 @@
                      success: function(data) {
                          //  var html = '<option value="">Product Price</option>';
                          var pdt_price = data;
-                         $('#product_price' + price_id).text(pdt_price);
+                         $('#product_price' + price_id).html(pdt_price);
                      }
                  })
              }
 
 
 
-         });
+         })
+
+
+         
+
+     
+
+
+       
+            
+
+             $(document).on("change", (".product_quantity"), function() {
+                 
+
+                var pdt_price_id = $(".product_price").data('product-price');
+                var quantity = $("#product_quantity"+pdt_price_id).val();
+
+                var pro_id = $("#product_name"+pdt_price_id).val();
+
+
+                $.ajax({
+                     url: "json/show_pdt_by_ctg.php",
+                     method: "POST",
+                     data: {
+                         action: 'total_price',
+                         pdt_id: pro_id,
+                         quantity:quantity
+
+                     },
+                     success: function(data) {
+                         //  var html = '<option value="">Product Price</option>';
+                         var pdt_price = data;
+                         $('#total_price'+pdt_price_id).text(pdt_price);
+                     }
+                 })
+
+                 
+             })
+      
+
+
+
+        //  $(document).on("change", (".product_quantity"), function(){
+        //          var quantity = $(this).val();
+        //          var pdt_price_id = $(".product_price").data('product-price');
+
+        //          var single_pro_price = parseInt($("#product_price"+pdt_price_id).text());
+        //      //    alert (single_pro_price);
+
+        //          $('#total_price'+pdt_price_id).text(quantity*single_pro_price);
+        //  })
+
+
+
+
+
+
+
+
 
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 30, 2021 at 12:48 PM
+-- Generation Time: Sep 04, 2021 at 06:56 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.4.22
 
@@ -123,8 +123,8 @@ CREATE TABLE `order_details` (
 
 INSERT INTO `order_details` (`order_id`, `user_id`, `product_name`, `product_item`, `amount`, `order_status`, `trans_id`, `shiping`, `order_time`) VALUES
 (1, 3, 'Banana (Chini Chompa) (1 P), ', 1, 10, 2, '0', '', '2021-08-21 18:57:21'),
-(3, 2, 'Banana (Shobri) (1 P), Apple Fuji(1 Kg), ', 2, 218, 2, '3241654', 'CharJabbar, Subarna Char Noakhali', '2021-08-21 19:28:37'),
-(4, 2, ' Apple Golden Delicious (1kg), Apple Fuji(1 Kg), ', 2, 458, 1, '3241654', 'CharJabbar, Subarna Char Noakhali', '2021-08-22 04:57:00'),
+(3, 2, 'Banana (Shobri) (1 P), Apple Fuji(1 Kg), ', 2, 218, 0, '3241654', 'CharJabbar, Subarna Char Noakhali', '2021-08-21 19:28:37'),
+(4, 2, 'Apple Golden Delicious (1kg), Apple Fuji(1 Kg), ', 2, 458, 1, '3241654', 'CharJabbar, Subarna Char Noakhali', '2021-08-22 04:57:00'),
 (5, 2, 'Grapes White (Kg)<br> Banana (Chini Chompa) (1 P)<br> ', 2, 260, 2, '3241654', 'CharJabbar, Subarna Char Noakhali', '2021-08-22 04:59:04');
 
 -- --------------------------------------------------------
@@ -148,15 +148,15 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`pdt_id`, `pdt_name`, `pdt_price`, `pdt_des`, `pdt_ctg`, `pdt_img`, `pdt_status`) VALUES
-(1, ' Apple Golden Delicious (1kg)', 250, 'Fruits bazar is an online shop for providing fresh fruits in Dhaka city. Here you can get huge collection of local and foreign fruits in your finger tips ', 1, 'apple1.jpg', 1),
-(2, 'Apple Gala(1 kg)', 245, 'fruits bazar is an online shop for providing fresh fruits in Dhaka city. Here you can get huge collection of local and foreign fruits in your finger tips', 1, '2901459.jpg', 1),
-(3, 'Apple Fuji(1 Kg)', 208, 'Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.', 1, '2901460.jpg', 1),
-(4, 'Banana (Shagor Kola) (1 P)', 12, 'Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.', 2, '2901099.jpg', 1),
-(5, 'Banana (Shobri) (1 P)', 10, 'Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.', 2, '2901100.jpg', 1),
-(6, 'Banana (Chini Chompa) (1 P)', 10, 'Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.', 2, '2901141.jpg', 1),
-(7, 'Grapes Red (Kg)', 300, 'Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.', 3, '2901051_19.jpg', 1),
-(8, 'Grapes White (Kg)', 250, 'Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.', 3, 'graps_white.jpg', 1),
-(9, 'Grapes Black (Kg)', 250, 'Tempranillo grapes are often blended with other grape varieties, such as Syrah, Grenache, or Cabernet Sauvignon, to create delicious wines.', 3, 'Types-of-Grapes-01.jpg', 1);
+(1, 'Apple Golden Delicious (1kg)', 250, 'Fruits bazar is an online shop for providing fresh fruits in Dhaka city. Here you can get huge collection of local and foreign fruits in your finger tips        ', 1, 'apple1.jpg', 1),
+(2, ' Apple Gala(1 kg)', 245, 'fruits bazar is an online shop for providing fresh fruits in Dhaka city. Here you can get huge collection of local and foreign fruits in your finger tips ', 1, '2901459.jpg', 1),
+(3, ' Apple Fuji(1 Kg)', 208, 'Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator. ', 1, '2901460.jpg', 1),
+(4, ' Banana (Shagor Kola) (1 P)', 12, 'Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator. ', 2, '2901099.jpg', 1),
+(5, ' Banana (Shobri) (1 P)', 10, 'Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator. ', 2, '2901100.jpg', 1),
+(6, ' Banana (Chini Chompa) (1 P)', 10, 'Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator. ', 2, '2901141.jpg', 1),
+(7, ' Grapes Red (Kg)', 300, 'Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator. ', 3, '2901051_19.jpg', 1),
+(8, ' Grapes White (Kg)', 250, 'Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator. ', 3, 'graps_white.jpg', 1),
+(9, ' Grapes Black (Kg)', 250, 'Tempranillo grapes are often blended with other grape varieties, such as Syrah, Grenache, or Cabernet Sauvignon, to create delicious wines. ', 3, 'black-seedless-grapes-500x500.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -201,7 +201,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `user_name`, `user_firstname`, `user_lastname`, `user_email`, `user_password`, `user_mobile`, `user_roles`, `created_at`, `modified_at`) VALUES
 (1, 'saiful', ' saiful', ' islam', 'saifulislamsapon@gmail.com', '202cb962ac59075b964b07152d234b70', 1246798, 5, '2021-08-21 13:38:23', '2021-08-21 13:38:23'),
 (2, 'Yearul', ' Yerarul', ' islam', 'yearul@gmail.com', '202cb962ac59075b964b07152d234b70', 1246798, 5, '2021-08-21 13:38:23', '2021-08-21 13:38:23'),
-(3, 'Omar6627', ' Omar Bin', ' Faruk', 'omarbfaruk@gmail.com', 'ad126b79a449eb003915c3917c8a30e1', 1684734323, 5, '2021-08-21 18:56:24', '2021-08-21 18:56:24');
+(3, 'Omar6627', ' Omar Bin', ' Faruk', 'omarbfaruk@gmail.com', 'ad126b79a449eb003915c3917c8a30e1', 1684734323, 5, '2021-08-21 18:56:24', '2021-08-21 18:56:24'),
+(4, 'Omar_6627', ' Omar Bin', ' Faruk', 'omarbinfaruk97@gmail.com', '8d5dcd9520e2712d648297f0f116c284', 1684734323, 5, '2021-08-30 11:04:09', '2021-08-30 11:04:09');
 
 -- --------------------------------------------------------
 
@@ -337,13 +338,13 @@ ALTER TABLE `order_details`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `pdt_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `pdt_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user_address`

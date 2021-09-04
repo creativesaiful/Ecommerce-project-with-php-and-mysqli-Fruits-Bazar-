@@ -45,9 +45,35 @@
                 $price_result = mysqli_query($connection, $pricequery);
 
                 foreach($price_result as $price){
-                      $pricehtml .= $price['pdt_price'];
+                      $pricehtml .= $price["pdt_price"];
+
+                      
                 }
                 echo $pricehtml;
+          
+           }
+        }
+    }
+
+
+    if(isset($_POST['action'])){
+        if($_POST['action']=='total_price'){
+           $pdtId= $_POST['pdt_id'];
+            $quantity = $_POST['quantity'];
+
+            $singlepricequery = "SELECT * FROM `product_info_ctg` WHERE `pdt_id`=$pdtId AND pdt_status=1";
+
+           
+           if(mysqli_query($connection, $singlepricequery)){
+                $single_price = '';
+                $prices_res = mysqli_query($connection, $singlepricequery);
+
+                foreach($prices_res as $sl_price){
+                      $single_price .= $sl_price["pdt_price"];
+
+                      
+                }
+                echo $single_price*$quantity;
           
            }
         }
