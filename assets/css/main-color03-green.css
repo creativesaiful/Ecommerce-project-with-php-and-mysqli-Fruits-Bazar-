@@ -57,7 +57,7 @@
 .service-inner.color-reverse .number,
 .content-404 .button,
 .biolife-cart-info .icon-qty-combine .qty{
-    background-color: #7faf51;
+    background-color: #1aaa43bf;
 }
 .hover-main-color:hover,
 .contain-product__right-info-layout2.cate .cat-info .cat-item:hover,
@@ -191,5 +191,5 @@ body.top-refine-opened .top-functions-area .flt-item.group-on-mobile .wrap-selec
 .sidebar .wgt-content .check-list li.selected a::before,
 .slider-opt03__layout01 .buttons .btn-thin:not(:hover),
 .sidebar .wgt-content .check-list li a:hover::before{
-	border-color: yellow;
+	border-color: #1aaa43bf;
 }

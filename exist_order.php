@@ -100,7 +100,7 @@ include_once("includes/head.php");
                                         <tr>
                                             <th class="product-name">Order Id</th>
                                             <th class="product-price">Products</th>
-                                            <th class="product-quantity">Products Items</th>
+                                            <th class="product-quantity">Quantity</th>
                                             <th class="product-subtotal">Amount</th>
                                             <th class="product-subtotal">Order Status</th>
                                             <th class="product-subtotal">Placing Time</th>
@@ -137,7 +137,7 @@ include_once("includes/head.php");
 
                                                     <td class="product-subtotal" data-title="Total">
                                                         <div class="price price-contain">
-                                                            <ins><span class="price-amount"><span class="currencySymbol"></span><?php echo $order_info['product_item'] ?></span></ins>
+                                                            <ins><span class="price-amount"><span class="currencySymbol"></span><?php echo $order_info['pdt_quantity'] ?></span></ins>
 
                                                         </div>
                                                     </td>
@@ -155,11 +155,13 @@ include_once("includes/head.php");
                                                             <?php  
                                                             
                                                             if($order_info['order_status']==0){
-                                                                echo "Pending";
+                                                                  echo "<p class='btn btn-danger btn-sm'> Pending </p>";
                                                             }elseif($order_info['order_status']==1) {
-                                                                echo "Processing";}
+                                                                echo "<p class='btn btn-warning btn-sm'> Processing </p>";
+                                                            }
                                                             elseif($order_info['order_status']==2) {
-                                                                echo "Delivered";   }    
+                                                                echo "<p class='btn btn-success btn-sm'> Delivered </p>";
+                                                              }    
                                                             ?>
                                                             
                                                         </span>

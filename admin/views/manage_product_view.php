@@ -7,6 +7,7 @@
    if(isset($_GET['prostatus'])){
        $id = $_GET['id'];
        if($_GET['prostatus']=='published'){
+        
            $obj->published_product($id);
        }elseif($_GET['prostatus']=='unpublished'){
            $obj->unpublished_product($id);
@@ -46,11 +47,14 @@
             <td> 
                 <?php 
                     if($pdt['pdt_status']==0){
-                        echo "Unpublished";  ?>
-                        <a href="?prostatus=published&&id=<?php echo $pdt['pdt_id'] ?>" class="btn btn-sm btn-primary">Published</a>
+                        echo "Unpublished";
+                        
+                        ?>
+                        <a href="?prostatus=published&&id=<?php echo $pdt['pdt_id']?>"  class="btn btn-sm btn-primary" >Published</a>
                     <?php
                     }else{
                         echo "Published";
+                       
                          ?>
                             <a href="?prostatus=unpublished&&id=<?php echo $pdt['pdt_id'] ?>" class="btn btn-sm btn-warning">unpublished</a>
                          <?php
@@ -63,5 +67,15 @@
 
         </tr>
         <?php }?>
+
+        
     </tbody>
 </table>
+
+
+<script>
+
+
+
+
+</script>

@@ -70,6 +70,9 @@
                                     </div>
                                 </div>
                                 <hr/>
+
+                                <p class="text-dark h5">saifulislamsapon@gmail.com</p>
+                                <p class="text-dark">Password: 1234</p>
                                 <div class="row">
                                     <div class="col-md-10">
                                         <p class="text-inverse text-left m-b-0">Thank you and enjoy our website.</p>

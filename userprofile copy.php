@@ -41,10 +41,7 @@ if (isset($_GET['logout'])) {
 }
 
 if (isset($_POST['confirm_order'])) {
-   
-    // $obj->place_order($_POST);
-
-    $order_msg = $obj->confirm_order($_POST, $_SESSION['cart']);
+    $obj->place_order($_POST);
 }
 
 
@@ -104,7 +101,7 @@ include_once("includes/head.php");
                     </div>
 
                     <div class="col-md-7">
-                        <h2 class="text-center text-dark">Cart Sumary</h2>
+                        <h2 class="text-center text-dark">Order Sumary</h2>
 
                         <?php
 
@@ -128,14 +125,9 @@ include_once("includes/head.php");
                                     </thead>
                                     <tbody>
 
-                                   
 
 
-
-                                        <?php
-                                      
-                                        
-                                        if (isset($_SESSION['cart'])) {
+                                        <?php if (isset($_SESSION['cart'])) {
 
                                             $_SESSION['subtotal'] = 0;
                                             $_SESSION['cart_pdt_number'] = 0;
@@ -146,7 +138,6 @@ include_once("includes/head.php");
                                                 $_SESSION['subtotal'] =  $_SESSION['subtotal'] + $value['pdt_price'];
                                                 $_SESSION['cart_pdt_number']++;
                                                 $order_names = $value['pdt_name'] . "<br> " . $order_names;
-                                                
 
 
                                         ?>
@@ -282,7 +273,7 @@ include_once("includes/head.php");
                             <div class="subtotal-line ">
                                 <p class="stt-name" style="font-weight: normal;">Use Cupon (fruitsbazar)</p>
                                 <br>
-                                <input type="text" name="coupon" id="cupon" class="form-control" style="width:40%; padding:5px; display:inline">
+                                <input type="text" id="cupon" class="form-control" style="width:40%; padding:5px; display:inline">
 
                                 <span class="stt-price" style="font-weight: normal;" id="discount"></span>
                             </div>

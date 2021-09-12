@@ -27,8 +27,9 @@ if(isset( $status_msg)){
             <tr>
                 <th class="product-name">Order Id</th>
                 <th class="product-price">Products</th>
-                <th class="product-quantity">Pdt Items</th>
+                <th class="product-quantity">Quantity</th>
                 <th class="product-subtotal">Amount</th>
+                <th class="product-subtotal">Uses Coupon</th>
                 <th class="product-subtotal">Customer Name</th>
                 <th class="product-subtotal">Customer Mobile</th>
                 <th class="product-subtotal">Trans No</th>
@@ -47,20 +48,21 @@ if(isset( $status_msg)){
         <tr>
                 <td class="product-name"><?php echo $order_info['order_id'] ?></td>
                 <td class="product-price"><?php echo $order_info['product_name'] ?></td>
-                <td class="product-quantity"><?php echo $order_info['product_item'] ?></td>
+                <td class="product-quantity"><?php echo $order_info['pdt_quantity'] ?></td>
                 <td class="product-subtotal"><?php echo $order_info['amount'] ?></td>
+                <td class="product-subtotal"><?php echo $order_info['uses_coupon'] ?></td>
                 <td class="product-subtotal"><?php echo $order_info['customer_name'] ?></td>
-                <td class="product-subtotal"><?php echo $order_info['customer_mobile'] ?></td>
+                <td class="product-subtotal"><?php echo $order_info['Shipping_mobile'] ?></td>
                 <td class="product-subtotal"><?php echo $order_info['trans_id'] ?></td>
-                <td class="product-subtotal"><?php echo $order_info['shiping'] ?></td>
+                <td class="product-subtotal"><?php echo $order_info['shiping_address'] ?></td>
                 <td class="product-subtotal">
                 <?php 
                     if($order_info['order_status']==0){
-                        echo "Pending";
+                        echo "<p class='btn btn-danger btn-sm'> Pending </p>";
                     } elseif($order_info['order_status']==1){
-                        echo "Processing";
+                        echo "<p class='btn btn-warning btn-sm'> Processing </p>";
                     } elseif($order_info['order_status']==2){
-                        echo "Delivered";
+                        echo "<p class='btn btn-success btn-sm'> Delivered </p>";
                     }
                 ?>
                 </td>

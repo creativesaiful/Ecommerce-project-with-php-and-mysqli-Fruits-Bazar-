@@ -11,7 +11,7 @@ $obj= new adminback();
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-9">
                         <section class="footer-item">
-                            <a href="home-03-green.html" class="logo footer-logo"><img src="assets/images/organic-3-green.png" alt="biolife logo" width="135" height="36"></a>
+                            <!--  -->
                             <div class="footer-phone-info">
                                 <i class="biolife-icon icon-head-phone"></i>
                                 <p class="r-info">

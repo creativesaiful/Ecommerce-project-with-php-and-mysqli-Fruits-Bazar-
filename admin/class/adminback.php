@@ -32,6 +32,7 @@ class  adminback
                 session_start();
                 $_SESSION['admin_id'] = $admin_info['admin_id'];
                 $_SESSION['admin_email'] = $admin_info['admin_email'];
+                $_SESSION['role'] = $admin_info['role'];
             } else {
                 $log_msg = "Email or password wrong";
                 return $log_msg;
@@ -43,6 +44,7 @@ class  adminback
     {
         unset($_SESSION['admin_id']);
         unset($_SESSION['admin_email']);
+        unset($_SESSION['role']);
         header("location:index.php");
         session_destroy();
     }
@@ -68,6 +70,55 @@ class  adminback
             return $update_mag;
         } else {
             return "Failed";
+        }
+    }
+
+    function add_admin_user($data){
+        $user_email = $data['user_name'];
+        $user_pass = md5($data['user_password']);
+        $user_role = $data['user_role'];
+
+        $query = "INSERT INTO `admin_info`( `admin_email`, `admin_pass`, `role`) VALUES ('$user_email','$user_pass',$user_role)";
+
+        if(mysqli_query($this->connection, $query)){
+            $msg="{$user_email} add as a user successfully";
+            return $msg;
+        }
+    }
+
+    function show_admin_user(){
+        $query = "SELECT * FROM `admin_info`";
+        if(mysqli_query($this->connection, $query)){
+            $result = mysqli_query($this->connection, $query);
+            return $result;
+        }
+    }
+
+    function show_admin_user_by_id($user_id){
+        $query = "SELECT * FROM `admin_info` WHERE `admin_id`=$user_id";
+        if(mysqli_query($this->connection, $query)){
+            $result = mysqli_query($this->connection, $query);
+            return $result;
+        }
+    }
+
+    function update_admin($data){
+        $u_id = $data['user_id'];
+        $u_email = $data['u-user-email'];
+        $u_role = $data['u_user_role'];
+        $query = "UPDATE `admin_info` SET `admin_email`='$u_email',`role`= $u_role WHERE `admin_id`= $u_id ";
+        if(mysqli_query($this->connection, $query)){
+            $up_msg = "Udated successfully";
+            return $up_msg;
+        }
+        
+    }
+
+    function delete_admin($admin_id){
+        $query = "DELETE FROM `admin_info` WHERE `admin_id`=$admin_id";
+        if(mysqli_query($this->connection, $query)){
+            $del_msg = "User Deleted Successfully";
+            return $del_msg;
         }
     }
 
@@ -219,7 +270,9 @@ class  adminback
     {
         $query = "UPDATE `products` SET `pdt_status`='1' WHERE pdt_id=$id";
         if (mysqli_query($this->connection, $query)) {
+            
             return "Published Successfully";
+            
         }
     }
 
@@ -227,7 +280,9 @@ class  adminback
     {
         $query = "UPDATE `products` SET `pdt_status`='0' WHERE pdt_id=$id";
         if (mysqli_query($this->connection, $query)) {
+            
             return "Unpublished Successfully";
+            
         }
     }
 
@@ -375,6 +430,8 @@ class  adminback
                 session_start();
                 $_SESSION['user_id'] = $user_info['user_id'];
                 $_SESSION['email'] = $user_info['user_email'];
+                $_SESSION['mobile'] = $user_info['user_mobile'];
+                $_SESSION['address'] = $user_info['user_address'];
 
                 $_SESSION['username'] = $user_info['user_name'];
             } else {
@@ -448,14 +505,16 @@ class  adminback
         $user_id = $data['user_id'];
         $product_name = $data['product_name'];
         $product_item = $data['product_item'];
+        $quantity = $data['quan'];
         $amount = $data['amount'];
         $order_status = $data['order_status'];
         $trans_id = $data['txid'];
+        $mobile = $data['shipping_Mobile'];
+
         $shiping = $data['shiping'];
 
 
-
-        $query = "INSERT INTO `order_details`(`user_id`, `product_name`, `product_item`, `amount`, `order_status`, `trans_id`, `shiping`, `order_time`) VALUES ( $user_id,'$product_name',$product_item, $amount, $order_status,'$trans_id','$shiping',NOW())";
+        $query = "INSERT INTO `order_details`(`user_id`, `product_name`, `product_item`, `amount`, `order_status`, `trans_id`,`Shipping_mobile`, `shiping`, `order_time`) VALUES ( $user_id,'$product_name',$product_item, $amount, $order_status,'$trans_id',$mobile,'$shiping',NOW())";
 
         if (mysqli_query($this->connection, $query)) {
 
@@ -464,9 +523,33 @@ class  adminback
         }
     }
 
+    function confirm_order($post, $session){
+        $user_id = $post['user_id'];
+        $order_status = $post['order_status'];
+        $trans_id = $post['txid'];
+        $mobile = $post['shipping_Mobile'];
+        $shiping = $post['shiping'];
+        $coupon = $_POST['coupon'];
+
+        foreach($session as $key){
+            $pdt_name = $key['pdt_name'];
+            $pdt_price= $key['pdt_price'];
+            $pdt_id= $key['pdt_id'];
+            $pdt_quantity=$key['quantity'];
+
+           $query= "INSERT INTO `order_details`(`user_id`, `product_name`,`pdt_quantity`, `amount`,`uses_coupon`, `order_status`, `trans_id`, `Shipping_mobile`, `shiping`, `order_time`) VALUES ($user_id,'$pdt_name',$pdt_quantity, $pdt_price,'$coupon', $order_status,'$trans_id','$mobile','$shiping',NOW())";
+           $result= mysqli_query($this->connection, $query);
+           unset($_SESSION['cart']);
+            header("location:exist_order.php");
+           
+
+        }
+
+    }
+
     function order_details_by_id($user_id)
     {
-        $query = "SELECT * FROM `order_details` WHERE `user_id`=$user_id";
+        $query = "SELECT * FROM `order_details` WHERE `user_id`=$user_id ORDER BY `order_time` DESC";
         if (mysqli_query($this->connection, $query)) {
             $order_query = mysqli_query($this->connection, $query);
             return $order_query;
@@ -475,7 +558,7 @@ class  adminback
 
     function all_order_info()
     {
-        $query = "SELECT * FROM `all_order_info`";
+        $query = "SELECT * FROM `all_order_info` ORDER BY `order_time` DESC";
 
         if (mysqli_query($this->connection, $query)) {
             $all_order_info = mysqli_query($this->connection, $query);
@@ -690,6 +773,70 @@ class  adminback
         } else {
             $msg = "File shoul be jpg or png formate";
             return $msg;
+        }
+    }
+
+
+    function post_comment($data){
+        $user_id = $data['user_id'];
+        $user_name = $data['user_name'];
+        $pdt_id = $data['pdt_id'];
+        $user_comment =  $data['comment'];
+
+        $query = "INSERT INTO `customer_feedback`(`user_id`, `user_name`, `pdt_id`, `comment`, `comment_date`) VALUES ($user_id,'$user_name',$pdt_id,'$user_comment',CURDATE())";
+        
+        if(mysqli_query($this->connection, $query)){
+            $msg = "Thanks for your valuable feedback";
+            return $msg;
+        }
+    }
+
+    function view_comment_id($id){
+        $query = "SELECT * FROM `customer_feedback` WHERE `pdt_id`=$id";
+        if(mysqli_query($this->connection, $query)){
+            $result = mysqli_query($this->connection, $query);
+
+            if(mysqli_num_rows($result)>0){
+                return $result;
+            }
+            
+        }
+    }
+
+    function view_comment_all(){
+        $query = "SELECT * FROM `customer_feedback`";
+        if(mysqli_query($this->connection, $query)){
+            $result = mysqli_query($this->connection, $query);
+
+           return $result;
+            
+        }
+    }
+
+    function edit_comment($cmt_id){
+        $query = "SELECT * FROM `customer_feedback` WHERE `id` = $cmt_id";
+
+        if(mysqli_query($this->connection, $query)){
+            $array = mysqli_query($this->connection, $query);
+            return $array;
+        }
+    }
+    function update_comment($data){
+        $cmt_id = $data['cmt_id'];
+        $comment = $data['u_comment'];
+        $query = "UPDATE `customer_feedback` SET `comment`='$comment' WHERE `id`=$cmt_id";
+        if(mysqli_query($this->connection, $query)){
+            $updata_msg = "Comment updated successfully";
+            return $updata_msg;
+        }
+    }
+
+    function delete_comment($cmt_id){
+        $query = "DELETE FROM `customer_feedback` WHERE `id`=$cmt_id";
+
+        if(mysqli_query($this->connection, $query)){
+            $del_msg = "Comment deleted successfully";
+            return $del_msg;
         }
     }
 }

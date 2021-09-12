@@ -89,6 +89,18 @@
                                             include ("views/edit_slider_view.php");
                                         }elseif($views=="add_order"){
                                             include ("views/add_order_view.php");
+                                        }elseif($views=="add_coupon"){
+                                            include ("views/add_coupon_view.php");
+                                        }elseif($views=="manage_coupon"){
+                                            include ("views/manage_coupon_view.php");
+                                        }elseif($views=="customer_feedback"){
+                                            include ("views/customer_feedback_view.php");
+                                        }elseif($views=="edit_comment"){
+                                            include ("views/edit_comment_view.php");
+                                        }elseif($views=="add-admin-user"){
+                                            include ("views/add_admin_user_view.php");
+                                        }elseif($views=="edit_admin"){
+                                            include ("views/edit_admin_view.php");
                                         }
 
                                     }
