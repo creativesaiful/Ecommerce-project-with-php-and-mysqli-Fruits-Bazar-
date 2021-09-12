@@ -210,7 +210,8 @@ include_once("includes/head.php");
                                         } ?>
 
 
-
+                                      
+                                   
                                         
 
                                         <!-- <tr class="cart_item wrap-buttons">
@@ -273,26 +274,26 @@ include_once("includes/head.php");
                     <div class="col-md-3">
                         <div class="shpcart-subtotal-block">
                             <div class="subtotal-line">
-                                <b class="stt-name">Subtotal <span class="sub">(<?php echo   $_SESSION['cart_pdt_number'] ?> Items)</span></b>
+                                <b class="stt-name">Total <span class="sub">(<?php echo   $_SESSION['cart_pdt_number'] ?> Items)</span></b>
                                 <span class="stt-price" id="totalOfall"> <?php echo $_SESSION['subtotal']  ?> </span>
 
 
                             </div>
-
+<!-- 
                             <div class="subtotal-line ">
                                 <p class="stt-name" style="font-weight: normal;">Use Cupon (fruitsbazar)</p>
                                 <br>
                                 <input type="text" name="coupon" id="cupon" class="form-control" style="width:40%; padding:5px; display:inline">
 
                                 <span class="stt-price" style="font-weight: normal;" id="discount"></span>
-                            </div>
-
+                            </div> -->
+<!-- 
                             <hr style="border-top:1px solid #313030">
 
                             <div class="subtotal-line">
                                 <b class="stt-name" style="font-weight: normal;">Total</b>
                                 <span class="stt-price" style="font-weight: normal;" id="afterdiscount"></span>
-                            </div>
+                            </div> -->
 
                             <div style="margin-top: 25px;">
                             <b class="stt-name">Payment <span class="sub"></span></b> 

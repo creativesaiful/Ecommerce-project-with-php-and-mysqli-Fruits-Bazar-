@@ -55,7 +55,7 @@
         
                                 <?php 
                                     if($views){
-                                        if($views=="dashborad"){
+                                        if($views=="dashboard"){
                                             include ('views/dashborad_view.php');
                                         }elseif($views=="add-cata"){
                                             include ("views/add_cata_view.php");
