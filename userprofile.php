@@ -1,5 +1,5 @@
 <?php
-
+ 
 session_start();
 include_once("admin/class/adminback.php");
 $obj = new adminback();
