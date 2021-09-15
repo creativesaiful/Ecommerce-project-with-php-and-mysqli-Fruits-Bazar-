@@ -80,33 +80,37 @@ include_once("includes/head.php");
                       
                                 <p class="form-row">
                                     <label for="username">Username:<span class="requite">*</span></label>
-                                    <input type="text" name="username" class="txt-input" required>
+                                    <input type="text" name="username" class="txt-input form-control" required>
                                 </p>
 
                                 <p class="form-row">
                                     <label for="user_firstname">First Name<span class="requite">*</span></label>
-                                    <input type="text" name="user_firstname" class="txt-input" required>
+                                    <input type="text" name="user_firstname" class="txt-input form-control" required>
                                 </p>
 
 
                                 <p class="form-row">
                                     <label for="user_lastname">Last Name</label>
-                                    <input type="text" name="user_lastname" class="txt-input">
+                                    <input type="text" name="user_lastname" class="txt-input form-control">
                                 </p>
 
                                 <p class="form-row">
                                     <label for="user_email">Email <span class="requite">*</span> </label>
-                                    <input type="email" name="user_email" required>
+                                    <input type="email" name="user_email" class="form-control" required>
                                 </p>
 
                                 <p class="form-row">
                                     <label for="user_password">Password <span class="requite">*</span> </label>
-                                    <input type="password" id="fid-pass" name="user_password" required>
+                                    <input type="password" id="fid-pass" name="user_password" class="form-control" required>
                                 </p>
 
                                 <p class="form-row">
                                     <label for="user_mobile">Mobile <span class="requite">*</span> </label>
-                                    <input type="tel" id="fid-pass" name="user_mobile" required>
+                                    <input type="tel" id="fid-pass" name="user_mobile"class="form-control" required>
+                                </p>
+                                <p class="form-row">
+                                    <label for="user_address">Address <span class="requite">*</span> </label>
+                                    <textarea name="user_address" id="" cols="10" class="form-control"></textarea>
                                 </p>
 
                                 <input type="hidden" name="user_roles" value="5">

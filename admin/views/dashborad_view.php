@@ -10,7 +10,7 @@
         overflow: hidden;
     }
 </style>
-<h2>Dashborad page</h2>
+<h2>Dashborad </h2>
 
 
 <div class="mydiv">
@@ -20,7 +20,7 @@
         <option value="<?php echo date('Y-m-d', strtotime('-7 days')) ?>" >This week</option>
         <option value="<?php echo date('Y-m-d', strtotime('-30 days')) ?>" >This Month</option>
         <option value="<?php echo date('Y-m-d', strtotime('-365 days')) ?>" >This Year</option>
-        <option value="2021-01-01" >Life Time</option>
+        <option value="2020-01-01" >Life Time</option>
     </select>
 </form>
 </div>
@@ -75,6 +75,47 @@
                  }
              });
 
+             $.ajax({
+                 url: "json/dashboard_json.php",
+                 method: "POST",
+                 data: {
+                     action: 'load_delivered_order',
+                     did: filterId
+                 },
+                 success: function(data) {
+                     var html = data;
+                    
+                     $('#DeliverOrder').text(data);
+                 }
+             });
+             $.ajax({
+                 url: "json/dashboard_json.php",
+                 method: "POST",
+                 data: {
+                     action: 'load_processing_order',
+                     did: filterId
+                 },
+                 success: function(data) {
+                     var html = data;
+                    
+                     $('#processingOrder').text(data);
+                 }
+             });
+
+             $.ajax({
+                 url: "json/dashboard_json.php",
+                 method: "POST",
+                 data: {
+                     action: 'load_pending_order',
+                     did: filterId
+                 },
+                 success: function(data) {
+                     var html = data;
+                    
+                     $('#pendingOrder').text(data);
+                 }
+             });
+
 
 
         })
@@ -121,12 +162,34 @@
 <div class="col-md-6 col-xl-3">
     <div class="card bg-c-pink order-card">
         <div class="card-block">
-            <h6 class="m-b-20">Total Profit</h6>
-            <h2 class="text-right"><i class="ti-wallet f-left"></i><span>$9,562</span></h2>
+            <h6 class="m-b-20">Delivered Order</h6>
+            <h2 class="text-right"><i class="ti-wallet f-left"></i><span id="DeliverOrder">$9,562</span></h2>
             <p class="m-b-0"><span class="f-right"></span></p>
         </div>
     </div>
 </div>
+
+<div class="col-md-6 col-xl-3">
+    <div class="card bg-c-pink order-card">
+        <div class="card-block">
+            <h6 class="m-b-20">Processing Order</h6>
+            <h2 class="text-right"><i class="ti-wallet f-left"></i><span id="processingOrder">$9,562</span></h2>
+            <p class="m-b-0"><span class="f-right"></span></p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6 col-xl-3">
+    <div class="card bg-c-yellow order-card">
+        <div class="card-block">
+            <h6 class="m-b-20">Pending Order</h6>
+            <h2 class="text-right"><i class="ti-reload f-left"></i><span id="pendingOrder">150</span></h2>
+            <p class="m-b-0"><span class="f-right"></span></p>
+        </div>
+    </div>
+</div>
+
+
 <!-- order-card end -->
 
 

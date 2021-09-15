@@ -279,15 +279,15 @@ include_once("includes/head.php");
 
 
                             </div>
-<!-- 
-                            <div class="subtotal-line ">
+
+                            <!-- <div class="subtotal-line ">
                                 <p class="stt-name" style="font-weight: normal;">Use Cupon (fruitsbazar)</p>
                                 <br>
                                 <input type="text" name="coupon" id="cupon" class="form-control" style="width:40%; padding:5px; display:inline">
 
                                 <span class="stt-price" style="font-weight: normal;" id="discount"></span>
-                            </div> -->
-<!-- 
+                            </div>
+
                             <hr style="border-top:1px solid #313030">
 
                             <div class="subtotal-line">
@@ -372,7 +372,8 @@ include_once("includes/head.php");
         }
 
         $(document).ready(function() {
-
+            
+            
             var cupon_code = $("#cupon");
 
             var discount = $("#discount");

@@ -80,7 +80,11 @@ include_once("includes/head.php");
                     }
                     ?>
                 </h1>
+
+               
             </div>
+
+
 
 
             <!--Navigation section-->
@@ -148,6 +152,9 @@ include_once("includes/head.php");
                                                     <b class="category">By: <?php echo $pro_data['ctg_name'] ?></b>
                                                 </div>
                                                 <span class="sku">Sku: <?php echo $pro_data['pdt_id'] ?></span>
+                                                <span class="stock" style="margin-left: 200px;">Stock: <?php echo $pro_data['product_stock'] ?> </span>
+
+
                                                 <p class="excerpt"><?php echo $pro_data['pdt_des'] ?></p>
                                                 <div class="price">
                                                     <ins><span class="price-amount"><span class="currencySymbol">Tk. </span><?php echo $pro_data['pdt_price'] ?></span></ins>

@@ -32,6 +32,11 @@
         <textarea name="pdt_des" cols="30" rows="10" class="form-control"></textarea>
     </div>
 
+    <div class="form-group">
+        <label for="pdt_img">Product Stock</label>
+        <input type="number" name="pdt_stock" class="form-control" max='30' min='1'>
+    </div>
+
 
     <div class="form-group">
         <label for="pdt_ctg">Product Catagories</label>
@@ -57,6 +62,8 @@
             <option value="0">Unpublished</option>
         </select>
     </div>
+
+
 
     <input type="submit" value="Add Product" name="add_pdt" class="btn btn-block btn-primary">
 </form>

@@ -202,6 +202,7 @@ class  adminback
         $pdt_name = $data['pdt_name'];
         $pdt_price = $data['pdt_price'];
         $pdt_des = $data['pdt_des'];
+        $pdt_stock = $data['pdt_stock'];
         $pdt_ctg = $data['pdt_ctg'];
         $pdt_status = $data['pdt_status'];
         $pdt_img_name = $_FILES['pdt_img']['name'];
@@ -215,7 +216,7 @@ class  adminback
             if ($pdt_img_size <= 2e+6) {
                 
                 if($width<271 && $height<271){
-                    $query = "INSERT INTO `products`( `pdt_name`, `pdt_price`, `pdt_des`, `pdt_ctg`, `pdt_img`, `pdt_status`) VALUES ('$pdt_name',$pdt_price,'$pdt_des',$pdt_ctg,'$pdt_img_name',$pdt_status)";
+                    $query = "INSERT INTO `products`( `pdt_name`, `pdt_price`, `pdt_des`,`product_stock`, `pdt_ctg`, `pdt_img`, `pdt_status`) VALUES ('$pdt_name',$pdt_price,'$pdt_des',$pdt_stock,$pdt_ctg,'$pdt_img_name',$pdt_status)";
 
 
                     if (mysqli_query($this->connection, $query)) {
@@ -302,6 +303,7 @@ class  adminback
         $pdt_price = $data['u_pdt_price'];
         $pdt_des = $data['u_pdt_des'];
         $pdt_ctg = $data['u_pdt_ctg'];
+        $pdt_stock = $data['pdt_stock'];
         $pdt_status = $data['u_pdt_status'];
         $pdt_img_name = $_FILES['u_pdt_img']['name'];
         $pdt_img_size = $_FILES['u_pdt_img']['size'];
@@ -322,7 +324,7 @@ class  adminback
                     unlink("uploads/".$pre_img);
 
 
-                    $query = "UPDATE `products` SET `pdt_name`=' $pdt_name',`pdt_price`='$pdt_price',`pdt_des`='$pdt_des',`pdt_ctg`='$pdt_ctg',`pdt_img`='$pdt_img_name',`pdt_status`=$pdt_status WHERE pdt_id=$pdt_id";
+                    $query = "UPDATE `products` SET `pdt_name`=' $pdt_name',`pdt_price`='$pdt_price',`pdt_des`='$pdt_des',`pdt_ctg`='$pdt_ctg',`pdt_img`='$pdt_img_name',`product_stock`=$pdt_stock,`pdt_status`=$pdt_status WHERE pdt_id=$pdt_id";
 
 
                     if (mysqli_query($this->connection, $query)) {
@@ -349,7 +351,7 @@ class  adminback
 
     function display_product_byCata($cataId)
     {
-        $query = "SELECT * FROM `product_info_ctg` WHERE ctg_id=$cataId AND pdt_status=1";
+        $query = "SELECT * FROM `product_info_ctg` WHERE ctg_id=$cataId AND pdt_status=1 AND `product_stock`>0";
         if (mysqli_query($this->connection, $query)) {
             $pdt_info = mysqli_query($this->connection, $query);
             return $pdt_info;
@@ -392,6 +394,7 @@ class  adminback
         $user_email = $data['user_email'];
         $user_password = md5($data['user_password']);
         $user_mobile = $data['user_mobile'];
+        $user_address = $data['user_address'];
         $user_roles = $data['user_roles'];
 
 
@@ -405,7 +408,7 @@ class  adminback
             $msg = "Username or email already exist";
             return $msg;
         } else {
-            $query = "INSERT INTO `users`( `user_name`, `user_firstname`, `user_lastname`, `user_email`, `user_password`, `user_mobile`, `user_roles`) VALUES ('$username',' $user_firstname',' $user_lastname','$user_email','$user_password',$user_mobile,$user_roles)";
+            $query = "INSERT INTO `users`( `user_name`, `user_firstname`, `user_lastname`, `user_email`, `user_password`, `user_mobile`,`user_address`, `user_roles`) VALUES ('$username',' $user_firstname',' $user_lastname','$user_email','$user_password',$user_mobile,'$user_address',$user_roles)";
 
             if (mysqli_query($this->connection, $query)) {
                 $msg = "Your registration done";
@@ -453,7 +456,7 @@ class  adminback
 
     function view_all_product()
     {
-        $query = "SELECT * FROM `product_info_ctg`";
+        $query = "SELECT * FROM `product_info_ctg` WHERE `product_stock`>1 ";
 
         if (mysqli_query($this->connection, $query)) {
             $pdt_info = mysqli_query($this->connection, $query);
@@ -837,6 +840,31 @@ class  adminback
         if(mysqli_query($this->connection, $query)){
             $del_msg = "Comment deleted successfully";
             return $del_msg;
+        }
+    }
+
+    function add_coupon($data){
+        $coupon_code = $data['cuopon_code'];
+        $coupon_description = $data['cuopon_description'];
+        $coupon_discount = $data['cuopon_discount'];
+        $coupon_status = $data['cuopon_status'];
+
+
+        $query = "INSERT INTO `cupon`( `cupon_code`, `description`, `discount`, `status`) VALUES ('$coupon_code','$coupon_description',$coupon_discount,$coupon_status)";
+
+        if(mysqli_query($this->connection, $query)){
+
+            
+            $add_msg = "Coupon added successfully";
+            return $add_msg;
+        }
+    }
+
+    function show_coupon(){
+        $query = "SELECT * FROM `cupon`";
+        if(mysqli_query($this->connection, $query)){
+            $result = mysqli_query($this->connection, $query);
+            return $result;
         }
     }
 }

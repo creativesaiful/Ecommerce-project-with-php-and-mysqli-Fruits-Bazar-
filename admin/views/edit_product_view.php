@@ -1,4 +1,6 @@
 <?php 
+
+ini_set("display_erros", "Off");
     $obj=new adminback();
     $cata_info = $obj-> p_display_catagory();
     if(isset($_GET['prostatus'])){
@@ -40,6 +42,11 @@
         <textarea name="u_pdt_des" cols="30" rows="10" class="form-control" ><?php echo $pdt['pdt_des']?> </textarea>
     </div>
 
+    <div class="form-group">
+        <label for="pdt_stock">Product Stock</label>
+        <input type="number" name="pdt_stock" class="form-control" max='30' min='1' value="<?php echo $pdt['product_stock']?>">
+    </div>
+
 
     <div class="form-group">
         <label for="pdt_ctg">Product Catagories</label>
@@ -47,22 +54,27 @@
         <option value="">Select a Catagory</option>
 
         <?php while($cata = mysqli_fetch_assoc($cata_info)){ ?>
-        <option value="<?php echo $cata['ctg_id'] ?>"><?php echo $cata['ctg_name'] ?></option>
+        <option value="<?php echo $cata['ctg_id'] ?>"  ><?php echo $cata['ctg_name'] ?></option>
 
         <?php }?>
         </select>
     </div>
 
+   
+
     <div class="form-group">
         <label for="pdt_img">Product Image</label>
+        <div class="mb-3">
+        <img src="uploads/<?php echo $pdt['pdt_img']?>" style="width: 80px;" >
+    </div>
         <input type="file" name="u_pdt_img" class="form-control">
     </div>
 
     <div class="form-group">
         <label for="pdt_status">Status</label>
         <select name="u_pdt_status" class="form-control">
-            <option value="1">Published</option>
-            <option value="0">Unpublished</option>
+            <option value="1" <?php if($pdt['pdt_status']==1){ echo "selected";} ?> >Published</option>
+            <option value="0" <?php if($pdt['pdt_status']==0){echo "selected";} ?> >Unpublished</option>
         </select>
     </div>
 

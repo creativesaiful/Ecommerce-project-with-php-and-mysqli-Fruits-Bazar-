@@ -16,9 +16,10 @@
     }
    }
 ?>
-<h2>Manage Product page</h2> 
+<h2>Manage Product </h2> 
+<br>
 
-<table class="table">
+<table class="table table-bordered">
     <thead>
         <tr>
             <th>Product Name</th>

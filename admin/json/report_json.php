@@ -97,4 +97,58 @@ if(isset($_POST['action'])){
 
     }
 }
+
+if(isset($_POST['action'])){
+    if($_POST['action']=='sell_by_product'){
+        $date = $_POST['did'];
+
+
+        $sell_query = "SELECT `order_id`, `product_name`, SUM(`pdt_quantity`), SUM(`amount`) FROM all_order_info WHERE (`order_date` BETWEEN '$date' and CURDATE()) GROUP BY `product_name` ORDER BY SUM(`pdt_quantity`) DESC";
+
+       
+       $sell_rows = mysqli_query($connection, $sell_query);
+
+        $html="";
+
+       while($sell_row = mysqli_fetch_assoc($sell_rows)){
+         $html.= "<tr> <td>".$sell_row['order_id']."</td> <td>".$sell_row['product_name']."</td><td>".$sell_row['SUM(`pdt_quantity`)']."</td> <td>".$sell_row['SUM(`amount`)']."</td> </tr>";
+
+       }
+
+
+       
+
+    echo $html;
+
+     
+    }
+}
+
+
+if(isset($_POST['action'])){
+    if($_POST['action']=='sell_by_customer'){
+        $date = $_POST['did'];
+
+
+        $sell_query = "SELECT `customer_name`, SUM(`pdt_quantity`), SUM(`amount`) FROM all_order_info WHERE (`order_date` BETWEEN '$date' and CURDATE()) GROUP BY `customer_name` ORDER BY SUM(`amount`) DESC;";
+
+       
+       $cus_rows = mysqli_query($connection, $sell_query);
+
+        $html="";
+
+       while($cus_row = mysqli_fetch_assoc($cus_rows)){
+         $html.= "<tr> <td>".$cus_row['customer_name']."</td> <td>".$cus_row['SUM(`pdt_quantity`)']."</td><td>".$cus_row['SUM(`amount`)']."</tr>";
+
+       }
+
+
+       
+
+    echo $html;
+
+     
+    }
+}
 ?>
+

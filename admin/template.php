@@ -101,6 +101,8 @@
                                             include ("views/add_admin_user_view.php");
                                         }elseif($views=="edit_admin"){
                                             include ("views/edit_admin_view.php");
+                                        }elseif($views=="make_report"){
+                                            include ("views/make_report_view.php");
                                         }
 
                                     }
