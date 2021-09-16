@@ -134,7 +134,7 @@
     <div class="card bg-c-blue order-card">
         <div class="card-block">
             <h6 class="m-b-20">Orders Received</h6>
-            <h2 class="text-right"><i class="ti-shopping-cart f-left"></i><span id="totalOrder">155</span></h2>
+            <h2 class="text-right"><i class="ti-shopping-cart f-left"></i><span id="totalOrder">0</span></h2>
             <p class="m-b-0"><span class="f-right"></span></p>
         </div>
     </div>
@@ -145,7 +145,7 @@
     <div class="card bg-c-green order-card">
         <div class="card-block">
             <h6 class="m-b-20">Total Sales</h6>
-            <h2 class="text-right"><i class="ti-tag f-left"></i><span id="totalSell">1641</span></h2>
+            <h2 class="text-right"><i class="ti-tag f-left"></i><span id="totalSell">0</span></h2>
             <p class="m-b-0"><span class="f-right"></span></p>
         </div>
     </div>
@@ -154,7 +154,7 @@
     <div class="card bg-c-yellow order-card">
         <div class="card-block">
             <h6 class="m-b-20">Satisfied Customer</h6>
-            <h2 class="text-right"><i class="ti-reload f-left"></i><span id="totalCustomer">150</span></h2>
+            <h2 class="text-right"><i class="ti-reload f-left"></i><span id="totalCustomer">0</span></h2>
             <p class="m-b-0"><span class="f-right"></span></p>
         </div>
     </div>
@@ -163,7 +163,7 @@
     <div class="card bg-c-pink order-card">
         <div class="card-block">
             <h6 class="m-b-20">Delivered Order</h6>
-            <h2 class="text-right"><i class="ti-wallet f-left"></i><span id="DeliverOrder">$9,562</span></h2>
+            <h2 class="text-right"><i class="ti-wallet f-left"></i><span id="DeliverOrder">0</span></h2>
             <p class="m-b-0"><span class="f-right"></span></p>
         </div>
     </div>
@@ -173,7 +173,7 @@
     <div class="card bg-c-pink order-card">
         <div class="card-block">
             <h6 class="m-b-20">Processing Order</h6>
-            <h2 class="text-right"><i class="ti-wallet f-left"></i><span id="processingOrder">$9,562</span></h2>
+            <h2 class="text-right"><i class="ti-wallet f-left"></i><span id="processingOrder">0</span></h2>
             <p class="m-b-0"><span class="f-right"></span></p>
         </div>
     </div>
@@ -183,7 +183,7 @@
     <div class="card bg-c-yellow order-card">
         <div class="card-block">
             <h6 class="m-b-20">Pending Order</h6>
-            <h2 class="text-right"><i class="ti-reload f-left"></i><span id="pendingOrder">150</span></h2>
+            <h2 class="text-right"><i class="ti-reload f-left"></i><span id="pendingOrder">0</span></h2>
             <p class="m-b-0"><span class="f-right"></span></p>
         </div>
     </div>

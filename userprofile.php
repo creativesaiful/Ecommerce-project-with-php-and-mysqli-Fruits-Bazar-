@@ -185,8 +185,9 @@ include_once("includes/head.php");
                      <form class="shopping-cart-form" action="#" method="POST">
 
                                                     <td class="product-price" data-title="Price">
+                                                        <?php $count=1; ?>
                                                         <div class="">
-                                                            <input type="number" value="1" name="quantity[]" class="quantity" style="width: 65px;" min="1" max="10" onchange="subtotal(), totalOfAll()">
+                                                            <input type="number" value="1" name="quantity" class="quantity" style="width: 65px;" id="quantity" min="1" max="10" onchange="subtotal(), totalOfAll()">
 
                                                         </div>
                                                     </td>
@@ -280,12 +281,12 @@ include_once("includes/head.php");
 
                             </div>
 
-                            <!-- <div class="subtotal-line ">
+                            <div class="subtotal-line ">
                                 <p class="stt-name" style="font-weight: normal;">Use Cupon (fruitsbazar)</p>
                                 <br>
                                 <input type="text" name="coupon" id="cupon" class="form-control" style="width:40%; padding:5px; display:inline">
 
-                                <span class="stt-price" style="font-weight: normal;" id="discount"></span>
+                                <span class="stt-price" style="font-weight: normal;" id="discount">0</span>
                             </div>
 
                             <hr style="border-top:1px solid #313030">
@@ -293,7 +294,7 @@ include_once("includes/head.php");
                             <div class="subtotal-line">
                                 <b class="stt-name" style="font-weight: normal;">Total</b>
                                 <span class="stt-price" style="font-weight: normal;" id="afterdiscount"></span>
-                            </div> -->
+                            </div>
 
                             <div style="margin-top: 25px;">
                             <b class="stt-name">Payment <span class="sub"></span></b> 
@@ -407,6 +408,43 @@ include_once("includes/head.php");
                 
 
 
+            });
+
+            $("#quantity").change(function(){
+                var cupon_code = $("#cupon");
+
+            var discount = $("#discount");
+            var total_price = parseInt($("#totalOfall").text());
+
+                $("#afterdiscount").text(total_price);
+              
+           
+            $(cupon_code).on("keyup keydown keypress blur", function() {
+
+
+                // alert (cupon_code.val());
+
+                $.ajax({
+                    url: "json/coupon.php",
+                    method: "POST",
+                    data: {
+                        action: 'load_discount',
+                        cupon: cupon_code.val(),
+                        price: total_price
+                    },
+                    success: function(data) {
+
+                        var html = Math.round(data);
+                        discount.text(html);
+                    }
+                })
+
+              
+                    $("#afterdiscount").text(total_price - parseInt(discount.text()));
+                
+
+
+            });
             })
 
 
