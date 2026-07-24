@@ -1,39 +1,43 @@
+
+
 <?php
 session_start();
 include_once("admin/class/adminback.php");
 $obj = new adminback();
 
-$cata_info = $obj->p_display_catagory();
-$cataDatas = array();
-while ($data = mysqli_fetch_assoc($cata_info)) {
-    $cataDatas[] = $data;
-}
+$pro_datas = array();
+$rel_pro = array();
+$cmt_row = 0;
+$cmt_fetch = false;
 
-if (isset($_GET['status'])) {
+// Check required parameters
+if (isset($_GET['status'], $_GET['id']) && $_GET['status'] == 'singleproduct') {
     $pdtId = $_GET['id'];
-    if ($_GET['status'] == 'singleproduct') {
-        $pdt_info = $obj->display_product_byId($pdtId);
-        $pdt_fetch = mysqli_fetch_assoc($pdt_info);
-        $pro_datas = array();
+    
+    // Fetch product info
+    $pdt_info = $obj->display_product_byId($pdtId);
+    if ($pdt_info && $pdt_fetch = mysqli_fetch_assoc($pdt_info)) {
         $pro_datas[] = $pdt_fetch;
+        
+        // Fetch related products using category ID safely
+        $ctg_id = $pdt_fetch['ctg_id'];
+        $rel_pro = $obj->related_product($ctg_id);
+    }
+    
+    // Handle comments submission
+    if (isset($_POST['post_comment'])) {
+        $cmt_msg = $obj->post_comment($_POST);
+    }
+    
+    // Fetch comments safely
+    $cmt_fetch = $obj->view_comment_id($pdtId);
+    if ($cmt_fetch && $cmt_fetch !== false) {
+        $cmt_row = mysqli_num_rows($cmt_fetch);
     }
 }
-$ctg_id = $pdt_fetch['ctg_id'];
-$rel_pro = $obj->related_product($ctg_id);
-
-
-if(isset($_POST['post_comment'])){
-    $cmt_msg = $obj->post_comment($_POST);
-}
-
-
-$cmt_fetch = $obj->view_comment_id($_GET['id']);
-if(isset($cmt_fetch)){
-    $cmt_row = mysqli_num_rows($cmt_fetch);
-}
-
 ?>
 
+ 
 
 
 
@@ -44,9 +48,7 @@ include_once("includes/head.php");
 <body class="biolife-body">
     <!-- Preloader -->
 
-    <?php
-    include_once("includes/preloader.php");
-    ?>
+   
 
     <!-- HEADER -->
     <header id="header" class="header-area style-01 layout-03">
